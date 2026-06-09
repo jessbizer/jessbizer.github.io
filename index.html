@@ -1,85 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GLITCH PROJECT</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="style.css" />
+<title>everything is unreal, its just a glitch</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    color: #d8d8d8;
+    font-family: "Courier New", monospace;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* subtle CRT texture */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.02),
+            rgba(255,255,255,0.02) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+    mix-blend-mode: soft-light;
+}
+
+/* title */
+.header {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.header h1 {
+    font-size: clamp(16px, 2vw, 24px);
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    animation: flicker 6s infinite;
+}
+
+/* image container */
+.image-wrap {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+}
+
+/* image */
+.image-wrap img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    filter:
+        contrast(1.15)
+        brightness(0.92)
+        saturate(0.9);
+    mix-blend-mode: screen;
+}
+
+/* subtle glitch text */
+@keyframes flicker {
+    0% { opacity: 1; }
+    2% { opacity: 0.7; }
+    4% { opacity: 1; }
+    8% { opacity: 0.9; }
+    70% { opacity: 1; }
+    72% { opacity: 0.5; }
+    74% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+    .header {
+        top: 15px;
+        left: 15px;
+    }
+
+    .image-wrap {
+        padding: 70px 10px 20px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-  <header class="hero">
-    <h1>GLITCH PROJECT</h1>
-    <p>
-      projection / sound / signal decay / altered realities
-    </p>
-  </header>
+<div class="header">
+    <h1>everything is unreal, its just a glitch</h1>
+</div>
 
-  <nav>
-    <a href="#video">VIDEO</a>
-    <a href="#audio">AUDIO</a>
-    <a href="#text">TEXT</a>
-    <a href="#downloads">DOWNLOADS</a>
-  </nav>
-
-  <main>
-
-    <section id="video">
-      <h2>VIDEO</h2>
-
-      <div class="grid">
-
-        <video controls>
-          <source src="assets/video/sample.mp4" type="video/mp4">
-        </video>
-
-        <video controls>
-          <source src="assets/video/sample2.mp4" type="video/mp4">
-        </video>
-
-      </div>
-    </section>
-
-    <section id="audio">
-      <h2>AUDIO</h2>
-
-      <div class="audio-block">
-        <p>LIVE SIGNAL MIX 01</p>
-
-        <audio controls>
-          <source src="assets/audio/sample.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-    </section>
-
-    <section id="text">
-      <h2>TEXT</h2>
-
-      <p>
-        Through projection, sound, and installation,
-        the work explores the glitch as both disruption
-        and portal.
-      </p>
-    </section>
-
-    <section id="downloads">
-      <h2>DOWNLOADS</h2>
-
-      <a class="download-link"
-         href="assets/downloads/zine.pdf"
-         download>
-         DOWNLOAD PDF
-      </a>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>Jess Bizer + collaborators</p>
-  </footer>
+<div class="image-wrap">
+    <!-- replace filename with your image -->
+    <img src="glitch-performance.png" alt="glitch projection performance">
+</div>
 
 </body>
 </html>
