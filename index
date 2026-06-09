@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GLITCH PROJECT</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header class="hero">
+    <h1>GLITCH PROJECT</h1>
+    <p>
+      projection / sound / signal decay / altered realities
+    </p>
+  </header>
+
+  <nav>
+    <a href="#video">VIDEO</a>
+    <a href="#audio">AUDIO</a>
+    <a href="#text">TEXT</a>
+    <a href="#downloads">DOWNLOADS</a>
+  </nav>
+
+  <main>
+
+    <section id="video">
+      <h2>VIDEO</h2>
+
+      <div class="grid">
+
+        <video controls>
+          <source src="assets/video/sample.mp4" type="video/mp4">
+        </video>
+
+        <video controls>
+          <source src="assets/video/sample2.mp4" type="video/mp4">
+        </video>
+
+      </div>
+    </section>
+
+    <section id="audio">
+      <h2>AUDIO</h2>
+
+      <div class="audio-block">
+        <p>LIVE SIGNAL MIX 01</p>
+
+        <audio controls>
+          <source src="assets/audio/sample.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+    </section>
+
+    <section id="text">
+      <h2>TEXT</h2>
+
+      <p>
+        Through projection, sound, and installation,
+        the work explores the glitch as both disruption
+        and portal.
+      </p>
+    </section>
+
+    <section id="downloads">
+      <h2>DOWNLOADS</h2>
+
+      <a class="download-link"
+         href="assets/downloads/zine.pdf"
+         download>
+         DOWNLOAD PDF
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Jess Bizer + collaborators</p>
+  </footer>
+
+</body>
+</html>
