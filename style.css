@@ -1,1 +1,138 @@
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* HERO */
+
+.hero {
+  padding: 12vh 8vw;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 100;
+  letter-spacing: 0.08em;
+}
+
+.hero p {
+  margin-top: 1rem;
+  opacity: 0.7;
+  max-width: 500px;
+}
+
+/* NAV */
+
+nav {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 8vw;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.9);
+  backdrop-filter: blur(10px);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+nav a:hover {
+  opacity: 0.5;
+}
+
+/* SECTIONS */
+
+section {
+  padding: 8vw;
+  border-bottom: 1px solid #111;
+}
+
+h2 {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  opacity: 0.5;
+}
+
+/* GRID */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+video {
+  width: 100%;
+  display: block;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+/* AUDIO */
+
+.audio-block {
+  max-width: 500px;
+}
+
+audio {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* DOWNLOAD */
+
+.download-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 1rem 1.5rem;
+}
+
+.download-link:hover {
+  background: white;
+  color: black;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 4rem 8vw;
+  opacity: 0.4;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    gap: 1rem;
+    overflow-x: auto;
+  }
+
+  .hero {
+    padding-top: 18vh;
+  }
+
+}
