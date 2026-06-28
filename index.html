@@ -190,19 +190,6 @@ pattern()
 .saturate(0)
 
 .out();
-<script>
-const hydra = new Hydra({
-  canvas: document.getElementById("hydra-canvas"),
-  detectAudio:false
-});
-
-osc(10,0.1,1)
-  .kaleid(7)
-  .modulate(noise(5,0.4),0.15)
-  .saturate(0)
-  .contrast(2)
-  .out();
-</script>
 
 </body>
 </html>
