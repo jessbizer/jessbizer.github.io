@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,26 +17,11 @@
 
 body{
     background:#000;
-    color:#d6d6d6;
-    font-family:"Courier New", monospace;
     overflow:hidden;
+    font-family:Courier New, monospace;
 }
 
-/* title */
-
-h1{
-    position:fixed;
-    top:30px;
-    left:35px;
-    font-size:18px;
-    font-weight:normal;
-    letter-spacing:.08em;
-    z-index:100;
-}
-
-/* image stack */
-
-.image-stack{
+.stack{
     position:relative;
     width:100vw;
     height:100vh;
@@ -43,113 +29,55 @@ h1{
 
 .window{
     position:absolute;
-    width:520px;
-
-    border:2px solid #d6d6d6;
-
+    width:500px;
+    border:2px solid #fff;
     background:#000;
-
     box-shadow:
-        18px 18px 0 #111,
-        20px 20px 0 #d6d6d6;
-
+        18px 18px 0 #000,
+        20px 20px 0 #fff;
     transform:rotate(-45deg);
-
-    transition:
-        opacity .18s linear,
-        transform .18s linear;
-
-    cursor:pointer;
+    transition:opacity .15s linear;
 }
 
 .window:hover{
     opacity:0;
 }
 
-/* placement */
-
-.w1{
-    left:120px;
-    top:90px;
-    z-index:7;
-}
-
-.w2{
-    left:190px;
-    top:140px;
-    z-index:6;
-}
-
-.w3{
-    left:260px;
-    top:190px;
-    z-index:5;
-}
-
-.w4{
-    left:330px;
-    top:240px;
-    z-index:4;
-}
-
-.w5{
-    left:400px;
-    top:290px;
-    z-index:3;
-}
-
-.w6{
-    left:470px;
-    top:340px;
-    z-index:2;
-}
-
-.w7{
-    left:540px;
-    top:390px;
-    z-index:1;
-}
-
-/* responsive */
-
-@media (max-width:900px){
-
-.window{
-    width:320px;
-}
-
-.w1{left:10px;top:90px;}
-.w2{left:40px;top:120px;}
-.w3{left:70px;top:150px;}
-.w4{left:100px;top:180px;}
-.w5{left:130px;top:210px;}
-.w6{left:160px;top:240px;}
-.w7{left:190px;top:270px;}
-
-}
+.w1{left:80px;top:70px;z-index:9;}
+.w2{left:140px;top:120px;z-index:8;}
+.w3{left:200px;top:170px;z-index:7;}
+.w4{left:260px;top:220px;z-index:6;}
+.w5{left:320px;top:270px;z-index:5;}
+.w6{left:380px;top:320px;z-index:4;}
+.w7{left:440px;top:370px;z-index:3;}
+.w8{left:500px;top:420px;z-index:2;}
+.w9{left:560px;top:470px;z-index:1;}
 
 </style>
+
 </head>
 
 <body>
 
-<h1>everything is unreal, it's just a glitch</h1>
+<div class="stack">
 
-<div class="image-stack">
+<img class="window w1" src="glitch_site (1).jpg">
 
-<img src="Screenshot 2025-09-23 135714.jpg" class="window w1">
+<img class="window w2" src="glitch_site (2).jpg">
 
-<img src="Screenshot 2026-06-28 151711.jpg" class="window w2">
+<img class="window w3" src="glitch_site (3).jpg">
 
-<img src="3d_grid.jpg" class="window w3">
+<img class="window w4" src="glitch_site (4).jpg">
 
-<img src="26_05_glitch_still.jpg" class="window w4">
+<img class="window w5" src="glitch_site (5).jpg">
 
-<img src="glitch_figgy_crowpose.jpg" class="window w5">
+<img class="window w6" src="glitch_site (6).jpg">
 
-<img src="gtlich_dark_bridgepose.jpg" class="window w6">
+<img class="window w7" src="glitch_site (7).jpg">
 
-<img src="lenticular_shape.jpg" class="window w7">
+<img class="window w8" src="glitch_site (8).jpg">
+
+<img class="window w9" src="glitch_site (9).jpg">
 
 </div>
 
