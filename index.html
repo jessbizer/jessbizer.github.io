@@ -3,85 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>everything is unreal, it's just a glitch</title>
+
+<title>everything is unreal, its just a glitch</title>
+
+<script src="https://cdn.jsdelivr.net/npm/hydra-synth/dist/hydra-synth.js"></script>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html, body{
-  width:100%;
-  height:100%;
-  background:#000;
-  overflow:hidden;
-  font-family:"Courier New", monospace;
+html, body {
+    min-height: 100%;
+    background: transparent;
+    color: #d6d6d6;
+    font-family: "Courier New", monospace;
+    overflow-x: hidden;
 }
 
-/* MENU */
-.menu{
-  position:fixed;
-  top:25px;
-  left:25px;
-  z-index:50;
-  font-size:16px;
-  line-height:1.8;
+#hydra-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.menu a{
-  display:inline-block;
-  color:white;
-  text-decoration:none;
-  background:black;
-  padding:0 5px;
-  margin-bottom:6px;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.025),
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px,
+            transparent 3px
+        );
 }
 
-/* HYDRA BACKGROUND */
-#hydra-canvas{
-  position:fixed;
-  inset:0;
-  width:100vw;
-  height:100vh;
-  z-index:0;
-  display:block;
+.content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
 }
 
-/* IMAGE STACK */
-.stack{
-  position:relative;
-  width:100vw;
-  height:100vh;
-  z-index:10;
+.header {
+    margin-bottom: 30px;
 }
 
-.window{
-  position:absolute;
-  width:500px;
-  background:transparent;
-  box-shadow:
-    18px 18px 0 #000,
-    20px 20px 0 #fff;
-  transform:rotate(-45deg);
-  transition:opacity .15s linear;
+.header h1 {
+    font-size: 18px;
+    font-weight: normal;
+    text-transform: lowercase;
+    letter-spacing: 1px;
 }
 
-.window:hover{
-  opacity:0;
+.main {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
 }
 
-/* image 5 is top */
-.w5{left:80px;top:70px;z-index:9;}
-.w1{left:140px;top:120px;z-index:8;}
-.w2{left:200px;top:170px;z-index:7;}
-.w3{left:260px;top:220px;z-index:6;}
-.w4{left:320px;top:270px;z-index:5;}
-.w6{left:380px;top:320px;z-index:4;}
-.w7{left:440px;top:370px;z-index:3;}
-.w8{left:500px;top:420px;z-index:2;}
-.w9{left:560px;top:470px;z-index:1;}
+.left {
+    width: 800px;
+    max-width: 100%;
+}
+
+.left a {
+    display: block;
+    width: 100%;
+}
+
+.left img {
+    width: 800px;
+    height: 533px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid #1b1b1b;
+    filter: brightness(0.92) contrast(1.08);
+    transition: opacity 0.2s ease;
+}
+
+.left img:hover {
+    opacity: 0.82;
+}
+
+.right {
+    flex: 1;
+    padding-top: 5px;
+}
+
+.directory {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.directory tr {
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.directory td {
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+.directory a {
+    color: #8cb7ff;
+    text-decoration: none;
+}
+
+.directory a:hover {
+    text-decoration: underline;
+}
+
+.dir-header td {
+    color: #888;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+@media(max-width: 1000px) {
+    .main {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .left img {
+        width: 100%;
+        height: auto;
+    }
+
+    .directory td {
+        font-size: 13px;
+    }
+
+    .header h1 {
+        font-size: 15px;
+    }
+}
 </style>
 </head>
 
@@ -89,69 +159,90 @@ html, body{
 
 <canvas id="hydra-canvas"></canvas>
 
-<nav class="menu">
-  <a href="#">everything is unreal</a><br>
-  <a href="#">images</a><br>
-  <a href="#">video</a><br>
-  <a href="#">audio</a><br>
-  <a href="#">text</a>
-</nav>
+<div class="content">
 
-<div class="stack">
-  <img class="window w5" src="glitch_site (5).jpg">
-  <img class="window w1" src="glitch_site (1).jpg">
-  <img class="window w2" src="glitch_site (2).jpg">
-  <img class="window w3" src="glitch_site (3).jpg">
-  <img class="window w4" src="glitch_site (4).jpg">
-  <img class="window w6" src="glitch_site (6).jpg">
-  <img class="window w7" src="glitch_site (7).jpg">
-  <img class="window w8" src="glitch_site (8).jpg">
-  <img class="window w9" src="glitch_site (9).jpg">
+    <div class="header">
+        <h1>everything is unreal, it’s just a glitch</h1>
+    </div>
+
+    <div class="main">
+
+        <div class="left">
+            <a href="glitch_figgy_crowpose.jpg" target="_blank">
+                <img 
+                    src="glitch_figgy_crowpose.jpg" 
+                    alt="glitch figgy crowpose"
+                >
+            </a>
+        </div>
+
+        <div class="right">
+            <table class="directory">
+                <tr class="dir-header">
+                    <td>name</td>
+                    <td>type</td>
+                </tr>
+
+                <tr>
+                    <td><a href="images/">images/</a></td>
+                    <td>folder</td>
+                </tr>
+
+                <tr>
+                    <td><a href="video/">video/</a></td>
+                    <td>folder</td>
+                </tr>
+
+                <tr>
+                    <td><a href="audio/">audio/</a></td>
+                    <td>folder</td>
+                </tr>
+
+                <tr>
+                    <td><a href="text/">text/</a></td>
+                    <td>folder</td>
+                </tr>
+
+                <tr>
+                    <td><a href="about.txt">about.txt</a></td>
+                    <td>text</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
 </div>
 
-<script src="https://unpkg.com/hydra-synth"></script>
-
 <script>
-const hydra = new Hydra({
-  canvas: document.getElementById("hydra-canvas"),
-  detectAudio:false
+window.addEventListener("load", function () {
+    const canvas = document.getElementById("hydra-canvas");
+
+    if (typeof Hydra === "undefined") {
+        console.error("Hydra did not load. Check the script URL or internet connection.");
+        return;
+    }
+
+    const hydra = new Hydra({
+        canvas: canvas,
+        detectAudio: false
+    });
+
+    voronoi(350, 0.15)
+        .modulateScale(osc(8).rotate(() => Math.sin(time)), 0.5)
+        .thresh(0.8)
+        .modulateRotate(osc(7), 0.4)
+        .thresh(0.7)
+        .diff(src(o0).scale(1.8))
+        .modulateScale(osc(2).modulateRotate(o0, 0.74))
+        .diff(
+            src(o0)
+                .rotate([-0.012, 0.01, -0.002, 0])
+                .scrollY(0, [-1 / 199800, 0].fast(0.7))
+        )
+        .brightness([-0.02, -0.17].smooth().fast(0.5))
+        .out(o0);
 });
-
-speed = 0.18;
-
-pattern = () =>
-  osc(180,0)
-    .kaleid(5)
-    .rotate(0.18)
-    .scale(1.45,0.38)
-    .scrollX(0.12)
-    .scrollY(-0.08)
-    .modulate(noise(3,0.25),0.12);
-
-pattern()
-  .scrollX(() => 0.18 + 0.04*Math.sin(time*0.27),0.015)
-  .scrollY(() => -0.08 + 0.03*Math.cos(time*0.19),0.011)
-  .rotate(() => 0.12*Math.sin(time*0.11))
-  .modulateRotate(noise(5,0.2),0.25)
-  .modulateScale(noise(2,0.35),0.35)
-  .mult(
-    pattern()
-      .rotate(0.55)
-      .scrollX(0.33,-0.02)
-      .scrollY(-0.17,0.018)
-      .pixelate(140,60)
-  )
-  .diff(
-    noise(40,.55)
-      .pixelate(80,30)
-      .thresh(.72)
-  )
-  .modulate(noise(150,.8),.05)
-  .pixelate(280,90)
-  .contrast(2.3)
-  .brightness(-0.08)
-  .saturate(0)
-  .out();
 </script>
 
 </body>
