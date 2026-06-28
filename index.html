@@ -229,7 +229,7 @@ window.addEventListener("load", function () {
     });
 
     voronoi(350, 0.15)
-        .modulateScale(osc(8).rotate(() => Math.sin(time)), 0.5)
+        .modulateScale(osc(8).rotate(() => Math.sin(time)), 0)
         .thresh(0.8)
         .modulateRotate(osc(7), 0.4)
         .thresh(0.7)
