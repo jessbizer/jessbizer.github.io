@@ -159,6 +159,7 @@ body::before{
     .directory td{
         font-size:13px;
     }
+    
 
     .header h1{
         font-size:15px;
@@ -166,13 +167,63 @@ body::before{
 }
 
 </style>
+    <script src="https://unpkg.com/hydra-synth"></script>
+
+<canvas id="hydra-canvas"></canvas>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    overflow-x: hidden;
+  }
+
+  #hydra-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-family: monospace;
+    padding: 40px;
+  }
+</style>
+
+<script>
+  const hydra = new Hydra({
+    canvas: document.getElementById("hydra-canvas"),
+    detectAudio: false
+  });
+
+  voronoi(350, 0.15)
+    .modulateScale(osc(8).rotate(() => Math.sin(time)), 0.5)
+    .thresh(0.8)
+    .modulateRotate(osc(7), 0.4)
+    .thresh(0.7)
+    .diff(src(o0).scale(1.8))
+    .modulateScale(osc(2).modulateRotate(o0, 0.74))
+    .diff(
+      src(o0)
+        .rotate([-0.012, 0.01, -0.002, 0])
+        .scrollY(0, [-1 / 199800, 0].fast(0.7))
+    )
+    .brightness([-0.02, -0.17].smooth().fast(0.5))
+    .out(o0);
+</script>
 </head>
 
 <body>
-
-<div class="header">
-    <h1>everything is unreal, its just a glitch</h1>
+<div class="content">
+  <h1>everything is unreal, it’s just a glitch</h1>
 </div>
+
 
 <div class="main">
 
