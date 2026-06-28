@@ -6,7 +6,7 @@
 
 <title>everything is unreal, its just a glitch</title>
 
-<script src="https://unpkg.com/hydra-synth"></script>
+<script src="https://cdn.jsdelivr.net/npm/hydra-synth/dist/hydra-synth.js"></script>
 
 <style>
 * {
@@ -28,7 +28,8 @@ html, body {
     inset: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -2;
+    z-index: 0;
+    pointer-events: none;
 }
 
 body::before {
@@ -36,7 +37,7 @@ body::before {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: -1;
+    z-index: 1;
     background:
         repeating-linear-gradient(
             to bottom,
@@ -49,7 +50,7 @@ body::before {
 
 .content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     padding: 20px;
 }
 
@@ -105,7 +106,7 @@ body::before {
 }
 
 .directory tr {
-    border-bottom: 1px solid #111;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
 .directory td {
@@ -123,9 +124,9 @@ body::before {
 }
 
 .dir-header td {
-    color: #666;
+    color: #888;
     padding-bottom: 16px;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 @media(max-width: 1000px) {
@@ -214,25 +215,34 @@ body::before {
 </div>
 
 <script>
-const hydra = new Hydra({
-    canvas: document.getElementById("hydra-canvas"),
-    detectAudio: false
-});
+window.addEventListener("load", function () {
+    const canvas = document.getElementById("hydra-canvas");
 
-voronoi(350, 0.15)
-    .modulateScale(osc(8).rotate(() => Math.sin(time)), 0.5)
-    .thresh(0.8)
-    .modulateRotate(osc(7), 0.4)
-    .thresh(0.7)
-    .diff(src(o0).scale(1.8))
-    .modulateScale(osc(2).modulateRotate(o0, 0.74))
-    .diff(
-        src(o0)
-            .rotate([-0.012, 0.01, -0.002, 0])
-            .scrollY(0, [-1 / 199800, 0].fast(0.7))
-    )
-    .brightness([-0.02, -0.17].smooth().fast(0.5))
-    .out(o0);
+    if (typeof Hydra === "undefined") {
+        console.error("Hydra did not load. Check the script URL or internet connection.");
+        return;
+    }
+
+    const hydra = new Hydra({
+        canvas: canvas,
+        detectAudio: false
+    });
+
+    voronoi(350, 0.15)
+        .modulateScale(osc(8).rotate(() => Math.sin(time)), 0.5)
+        .thresh(0.8)
+        .modulateRotate(osc(7), 0.4)
+        .thresh(0.7)
+        .diff(src(o0).scale(1.8))
+        .modulateScale(osc(2).modulateRotate(o0, 0.74))
+        .diff(
+            src(o0)
+                .rotate([-0.012, 0.01, -0.002, 0])
+                .scrollY(0, [-1 / 199800, 0].fast(0.7))
+        )
+        .brightness([-0.02, -0.17].smooth().fast(0.5))
+        .out(o0);
+});
 </script>
 
 </body>
