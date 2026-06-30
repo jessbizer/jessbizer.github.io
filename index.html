@@ -166,36 +166,37 @@ const hydra = new Hydra({
   detectAudio:false
 });
 
-speed = 0.12;
+speed = 0.16;
 
-osc(260, 0.01, 0)
+osc(90, 0.02, 0.2)
   .rotate(1.57)
-  .pixelate(18, 260)
+  .pixelate(24, 180)
   .scrollX(function(){
-    return 0.08 + 0.04 * Math.sin(time * 0.4);
+    return 0.08 + 0.04 * Math.sin(time * 0.5);
   })
   .scrollY(function(){
-    return 0.02 * Math.sin(time * 0.17);
+    return 0.02 * Math.sin(time * 0.2);
   })
   .modulate(
-    noise(5, 0.25)
-      .pixelate(12, 40),
-    0.18
+    noise(4, 0.3)
+      .pixelate(8, 30),
+    0.12
   )
-  .modulateScale(
-    osc(9, 0.02, 0)
-      .rotate(1.57)
-      .pixelate(6, 80),
+  .add(
+    noise(35, 0.45)
+      .pixelate(180, 22)
+      .thresh(0.55),
     0.35
   )
-  .diff(
-    noise(80, 0.6)
-      .pixelate(220, 18)
-      .thresh(0.72)
+  .modulateScale(
+    osc(6, 0.02, 0)
+      .rotate(1.57)
+      .pixelate(5, 70),
+    0.18
   )
-  .pixelate(320, 100)
-  .contrast(2.8)
-  .brightness(-0.1)
+  .pixelate(260, 90)
+  .contrast(2.2)
+  .brightness(0.05)
   .saturate(0)
   .out();
 </script>
