@@ -161,82 +161,46 @@ html, body{
 <script src="https://unpkg.com/hydra-synth"></script>
 
 <script>
-
+<script>
 const hydra = new Hydra({
   canvas: document.getElementById("hydra-canvas"),
   detectAudio:false
 });
 
-const hydra = new Hydra({
-  canvas: document.getElementById("hydra-canvas"),
-  detectAudio:false
-});
+speed = 0.12;
 
-speed = 0.15;
+osc(260, 0.01, 0)
+  .rotate(1.57)
+  .pixelate(18, 260)
+  .scrollX(function(){
+    return 0.08 + 0.04 * Math.sin(time * 0.4);
+  })
+  .scrollY(function(){
+    return 0.02 * Math.sin(time * 0.17);
+  })
+  .modulate(
+    noise(5, 0.25)
+      .pixelate(12, 40),
+    0.18
+  )
+  .modulateScale(
+    osc(9, 0.02, 0)
+      .rotate(1.57)
+      .pixelate(6, 80),
+    0.35
+  )
+  .diff(
+    noise(80, 0.6)
+      .pixelate(220, 18)
+      .thresh(0.72)
+  )
+  .pixelate(320, 100)
+  .contrast(2.8)
+  .brightness(-0.1)
+  .saturate(0)
+  .out();
+</script>
 
-base = () =>
-  osc(420,0,0)
-    .pixelate(420,32)
-    .rotate(0.002)
-    .scrollX(0.08)
-    .modulate(noise(5,0.22),0.06);
-
-base()
-
-.mult(
-  osc(18,0)
-    .rotate(Math.PI/2)
-    .pixelate(4,320)
-    .thresh(0.65)
-)
-
-.modulate(
-  osc(3,0)
-    .rotate(Math.PI/2)
-    .pixelate(8,22),
-  0.16
-)
-
-.modulateScale(
-  noise(2,0.18)
-    .pixelate(10,2),
-  0.45
-)
-
-.modulateRotate(
-  noise(4,0.1),
-  0.08
-)
-
-.scrollX(() =>
-  0.06 +
-  0.025*Math.sin(time*0.21) +
-  0.015*Math.sin(time*1.9)
-)
-
-.scrollY(() =>
-  0.004*Math.sin(time*0.07)
-)
-
-.diff(
-  noise(70,0.8)
-    .pixelate(240,8)
-    .thresh(0.74)
-)
-
-.add(
-  osc(2,0)
-    .rotate(Math.PI/2)
-    .pixelate(1,700)
-    .brightness(-0.3),
-  0.18
-)
-
-.pixelate(360,120)
-.contrast(3)
-.brightness(-0.12)
-.saturate(0)
-.out();
 </script>
 
 </body>
