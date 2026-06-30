@@ -20,6 +20,16 @@ html, body{
   font-family:"Courier New", monospace;
 }
 
+/* HYDRA BACKGROUND */
+#hydra-canvas{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  z-index:0;
+  display:block;
+}
+
 /* MENU */
 .menu{
   position:fixed;
@@ -39,33 +49,28 @@ html, body{
   margin-bottom:6px;
 }
 
-/* HYDRA BACKGROUND */
-#hydra-canvas{
+/* TABLE CONTAINER */
+.image_table{
   position:fixed;
-  inset:0;
-  width:100vw;
-  height:100vh;
-  z-index:0;
-  display:block;
+  top:180px;
+  left:25px;
+  z-index:20;
 }
 
+/* TABLE */
 table{
-    border-collapse:collapse;
-    border:2px inset #888;
+  border-collapse:collapse;
+  border:2px inset #888;
+  background:black;
 }
 
-/* Cells */
 td{
-    width:60px;
-    height:40px;
-    border:1px inset #666;
-    color:#fff;
-    text-align:center;
-    vertical-align:middle;
+  width:60px;
+  height:40px;
+  border:1px inset #666;
 }
 </style>
 </head>
-
 
 <body>
 
@@ -80,29 +85,29 @@ td{
 </nav>
 
 <div class="image_table">
-  <table>
-  <tbody>
-    <tr>
-      <td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    <tr>
-      <td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    <tr>
-      <td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    <tr>
-      <td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    <tr>
-      <td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td>
-    </tr>
-  </tbody>
+<table>
+<tbody>
+<tr>
+<td></td><td></td><td></td><td></td><td></td>
+<td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td>
+<td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td>
+<td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td>
+<td></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td>
+<td></td><td></td><td></td><td></td><td></td>
+</tr>
+</tbody>
 </table>
 </div>
 
