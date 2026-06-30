@@ -1,1 +1,205 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>everything is unreal, it's just a glitch</title> <style> *{ margin:0; padding:0; box-sizing:border-box; } html, body{ width:100%; height:100%; background:#000; overflow:hidden; font-family:"Courier New", monospace; } /* MENU */ .menu{ position:fixed; top:25px; left:25px; z-index:50; font-size:16px; line-height:1.8; } .menu a{ display:inline-block; color:white; text-decoration:none; background:black; padding:0 5px; margin-bottom:6px; } /* HYDRA BACKGROUND */ #hydra-canvas{ position:fixed; inset:0; width:100vw; height:100vh; z-index:0; display:block; } /* IMAGE STACK */ .stack{ position:relative; width:100vw; height:100vh; z-index:10; } .window{ position:absolute; width:500px; background:transparent; box-shadow: 18px 18px 0 #000, 20px 20px 0 #fff; transform:rotate(-45deg); transition:opacity .15s linear; } .window:hover{ opacity:0; } /* image 5 is top */ .w5{left:80px;top:70px;z-index:9;} .w1{left:140px;top:120px;z-index:8;} .w2{left:200px;top:170px;z-index:7;} .w3{left:260px;top:220px;z-index:6;} .w6{left:380px;top:320px;z-index:4;} .w7{left:440px;top:370px;z-index:3;} .w8{left:500px;top:420px;z-index:2;} .w9{left:560px;top:470px;z-index:1;} </style> </head> <body> <canvas id="hydra-canvas"></canvas> <nav class="menu"> <a href="#">everything is unreal</a><br> <a href="#">images</a><br> <a href="#">video</a><br> <a href="#">audio</a><br> <a href="#">text</a> </nav> <div class="stack"> <img class="window w5" src="glitch_site (5).jpg"> <img class="window w1" src="glitch_site (1).jpg"> <img class="window w2" src="glitch_site (2).jpg"> <img class="window w3" src="glitch_site (3).jpg"> <img class="window w6" src="glitch_site (6).jpg"> <img class="window w7" src="glitch_site (7).jpg"> <img class="window w8" src="glitch_site (8).jpg"> <img class="window w9" src="glitch_site (9).jpg"> </div> <script src="https://unpkg.com/hydra-synth"></script> <script> const hydra = new Hydra({ canvas: document.getElementById("hydra-canvas"), detectAudio:false }); speed = 0.18; pattern = () => osc(180,0) .kaleid(5) .rotate(0.18) .scale(1.45,0.38) .scrollX(0.12) .scrollY(-0.08) .modulate(noise(3,0.25),0.12); pattern() .scrollX(() => 0.18 + 0.04*Math.sin(time*0.27),0.015) .scrollY(() => -0.08 + 0.03*Math.cos(time*0.19),0.011) .rotate(() => 0.12*Math.sin(time*0.11)) .modulateRotate(noise(5,0.2),0.25) .modulateScale(noise(2,0.35),0.35) .mult( pattern() .rotate(0.55) .scrollX(0.33,-0.02) .scrollY(-0.17,0.018) .pixelate(140,60) ) .diff( noise(40,.55) .pixelate(80,30) .thresh(.72) ) .modulate(noise(150,.8),.05) .pixelate(280,90) .contrast(2.3) .brightness(-0.08) .saturate(0) .out(); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>everything is unreal, it's just a glitch</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html, body{
+  width:100%;
+  height:100%;
+  background:#000;
+  overflow:hidden;
+  font-family:"Courier New", monospace;
+}
+
+/* MENU */
+
+.menu{
+  position:fixed;
+  top:25px;
+  left:25px;
+  z-index:50;
+  font-size:16px;
+  line-height:1.8;
+}
+
+.menu a{
+  display:inline-block;
+  color:white;
+  text-decoration:none;
+  background:black;
+  padding:0 5px;
+  margin-bottom:6px;
+}
+
+/* HYDRA BACKGROUND */
+
+#hydra-canvas{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  z-index:0;
+  display:block;
+}
+
+/* IMAGE STACK */
+
+.stack{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  z-index:10;
+}
+
+.window{
+  position:absolute;
+  width:500px;
+  background:transparent;
+  box-shadow:
+    18px 18px 0 #000,
+    20px 20px 0 #fff;
+  transform:rotate(-45deg);
+  transition:opacity .15s linear;
+}
+
+.window:hover{
+  opacity:0;
+}
+
+/* image 5 is top */
+
+.w5{
+  left:80px;
+  top:70px;
+  z-index:9;
+}
+
+.w1{
+  left:140px;
+  top:120px;
+  z-index:8;
+}
+
+.w2{
+  left:200px;
+  top:170px;
+  z-index:7;
+}
+
+.w3{
+  left:260px;
+  top:220px;
+  z-index:6;
+}
+
+.w6{
+  left:380px;
+  top:320px;
+  z-index:4;
+}
+
+.w7{
+  left:440px;
+  top:370px;
+  z-index:3;
+}
+
+.w8{
+  left:500px;
+  top:420px;
+  z-index:2;
+}
+
+.w9{
+  left:560px;
+  top:470px;
+  z-index:1;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="hydra-canvas"></canvas>
+
+<nav class="menu">
+  <a href="#">everything is unreal</a><br>
+  <a href="#">images</a><br>
+  <a href="#">video</a><br>
+  <a href="#">audio</a><br>
+  <a href="#">text</a>
+</nav>
+
+<div class="stack">
+  <img class="window w5" src="glitch_site (5).jpg">
+  <img class="window w1" src="glitch_site (1).jpg">
+  <img class="window w2" src="glitch_site (2).jpg">
+  <img class="window w3" src="glitch_site (3).jpg">
+  <img class="window w6" src="glitch_site (6).jpg">
+  <img class="window w7" src="glitch_site (7).jpg">
+  <img class="window w8" src="glitch_site (8).jpg">
+  <img class="window w9" src="glitch_site (9).jpg">
+</div>
+
+<script src="https://unpkg.com/hydra-synth"></script>
+
+<script>
+
+const hydra = new Hydra({
+  canvas: document.getElementById("hydra-canvas"),
+  detectAudio:false
+});
+
+speed = 0.18;
+
+pattern = () =>
+  osc(180,0)
+    .kaleid(5)
+    .rotate(0.18)
+    .scale(1.45,0.38)
+    .scrollX(0.12)
+    .scrollY(-0.08)
+    .modulate(noise(3,0.25),0.12);
+
+pattern()
+  .scrollX(() => 0.18 + 0.04*Math.sin(time*0.27),0.015)
+  .scrollY(() => -0.08 + 0.03*Math.cos(time*0.19),0.011)
+  .rotate(() => 0.12*Math.sin(time*0.11))
+  .modulateRotate(noise(5,0.2),0.25)
+  .modulateScale(noise(2,0.35),0.35)
+  .mult(
+    pattern()
+      .rotate(0.55)
+      .scrollX(0.33,-0.02)
+      .scrollY(-0.17,0.018)
+      .pixelate(140,60)
+  )
+  .diff(
+    noise(40,.55)
+      .pixelate(80,30)
+      .thresh(.72)
+  )
+  .modulate(noise(150,.8),.05)
+  .pixelate(280,90)
+  .contrast(2.3)
+  .brightness(-0.08)
+  .saturate(0)
+  .out();
+
+</script>
+
+</body>
+</html>
