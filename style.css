@@ -158,3 +158,6 @@ img{
   object-fit:cover;
   display:block;
 }
+body{
+    background:red !important;
+}
