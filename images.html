@@ -2,50 +2,119 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Images</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>everything is unreal // images</title>
+
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
     background:#000;
-    color:white;
-    font-family:monospace;
-    padding:30px;
+    color:#fff;
+    font-family:"Courier New", monospace;
+    padding:25px;
 }
+
+/* MENU */
+
+.menu{
+    margin-bottom:30px;
+    line-height:1.8;
+}
+
+.menu a{
+    color:#fff;
+    text-decoration:none;
+}
+
+.menu a:hover{
+    background:#222;
+}
+
+/* TABLE */
+
 table{
     border-collapse:collapse;
     border:2px inset #888;
+    background:#000;
 }
+
 td{
-    width:80px;
-    height:80px;
+    width:120px;
+    height:90px;
     border:1px inset #666;
+    text-align:center;
+    vertical-align:middle;
+}
+
+/* Placeholder thumbnails */
+
+.thumb{
+    color:#888;
+    font-size:12px;
+}
+
+img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 </style>
 </head>
+
 <body>
 
-<h1>Images</h1>
+<nav class="menu">
+    <div>everything is unreal</div>
+    <br>
+    <a href="index.html">home</a><br>
+    <a href="images.html">images</a><br>
+    <a href="video.html">video</a><br>
+    <a href="audio.html">audio</a><br>
+    <a href="text.html">text</a>
+</nav>
 
 <table>
+
+<tr>
+<td><div class="thumb">image 01</div></td>
+<td><div class="thumb">image 02</div></td>
+<td><div class="thumb">image 03</div></td>
+<td><div class="thumb">image 04</div></td>
+<td><div class="thumb">image 05</div></td>
+<td><div class="thumb">image 06</div></td>
+<td><div class="thumb">image 07</div></td>
+<td><div class="thumb">image 08</div></td>
+<td><div class="thumb">image 09</div></td>
+<td><div class="thumb">image 10</div></td>
+</tr>
+
 <tr>
 <td></td><td></td><td></td><td></td><td></td>
 <td></td><td></td><td></td><td></td><td></td>
 </tr>
+
 <tr>
 <td></td><td></td><td></td><td></td><td></td>
 <td></td><td></td><td></td><td></td><td></td>
 </tr>
+
 <tr>
 <td></td><td></td><td></td><td></td><td></td>
 <td></td><td></td><td></td><td></td><td></td>
 </tr>
+
 <tr>
 <td></td><td></td><td></td><td></td><td></td>
 <td></td><td></td><td></td><td></td><td></td>
 </tr>
-<tr>
-<td></td><td></td><td></td><td></td><td></td>
-<td></td><td></td><td></td><td></td><td></td>
-</tr>
+
 </table>
 
 </body>
