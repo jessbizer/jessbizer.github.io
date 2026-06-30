@@ -166,41 +166,52 @@ const hydra = new Hydra({
   detectAudio:false
 });
 
-speed = 0.05;
+speed = 0.12;
 
-osc(90, 0.02, 0.2)
-  .rotate(1.57)
-  .pixelate(24, 180)
-  .scrollX(function(){
-    return 0.08 + 0.04 * Math.sin(time * 0.5);
-  })
-  .scrollY(function(){
-    return 0.02 * Math.sin(time * 0.2);
-  })
+osc(70, 0.01, 0)
+  .kaleid(4)
+  .rotate(0.78)
+  .scale(1.8, 0.42)
+  .pixelate(90, 260)
+
   .modulate(
-    noise(4, 0.3)
-      .pixelate(8, 30),
-    0.12
+    osc(12, 0.02, 0)
+      .rotate(1.57)
+      .pixelate(8, 180),
+    0.22
   )
-  .add(
-    noise(35, 0.45)
-      .pixelate(180, 22)
-      .thresh(0.55),
+
+  .modulateScale(
+    noise(3, 0.25)
+      .pixelate(16, 4),
     0.35
   )
-  .modulateScale(
-    osc(6, 1.02, 0)
+
+  .diff(
+    osc(38, 0, 0)
       .rotate(1.57)
-      .pixelate(5, 70),
-    0.18
+      .pixelate(220, 18)
+      .thresh(0.5)
   )
-  .pixelate(260, 90)
-  .contrast(2.2)
-  .brightness(0.05)
+
+  .scrollX(function(){
+    return 0.08 + 0.05 * Math.sin(time * 0.22);
+  })
+
+  .scrollY(function(){
+    return -0.04 + 0.03 * Math.cos(time * 0.17);
+  })
+
+  .contrast(3.1)
+  .brightness(0.04)
   .saturate(0)
+
+  .colorama(function(){
+    return 0.02 * Math.sin(time * 0.6);
+  })
+
   .out();
 </script>
-
 
 
 </body>
