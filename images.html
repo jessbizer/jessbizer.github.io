@@ -49,38 +49,7 @@ html, body{
   display:block;
 }
 
-/* IMAGE STACK */
-.stack{
-  position:relative;
-  width:100vw;
-  height:100vh;
-  z-index:10;
-}
 
-.window{
-  position:absolute;
-  width:500px;
-  background:transparent;
-  box-shadow:
-    18px 18px 0 #000,
-    20px 20px 0 #fff;
-  transform:rotate(-45deg);
-  transition:opacity .15s linear;
-}
-
-.window:hover{
-  opacity:0;
-}
-
-/* image 5 is top */
-.w5{left:80px;top:70px;z-index:9;}
-.w1{left:140px;top:120px;z-index:8;}
-.w2{left:200px;top:170px;z-index:7;}
-.w3{left:260px;top:220px;z-index:6;}
-.w6{left:380px;top:320px;z-index:4;}
-.w7{left:440px;top:370px;z-index:3;}
-.w8{left:500px;top:420px;z-index:2;}
-.w9{left:560px;top:470px;z-index:1;}
 </style>
 </head>
 
@@ -96,15 +65,8 @@ html, body{
   <a href="#">text</a>
 </nav>
 
-<div class="stack">
-  <img class="window w5" src="glitch_site (5).jpg">
-  <img class="window w1" src="glitch_site (1).jpg">
-  <img class="window w2" src="glitch_site (2).jpg">
-  <img class="window w3" src="glitch_site (3).jpg">
-   <img class="window w6" src="glitch_site (6).jpg">
-  <img class="window w7" src="glitch_site (7).jpg">
-  <img class="window w8" src="glitch_site (8).jpg">
-  <img class="window w9" src="glitch_site (9).jpg">
+<div class="image_table">
+  
 </div>
 
 <script src="https://unpkg.com/hydra-synth"></script>
