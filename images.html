@@ -140,7 +140,8 @@ img{
 </table>
 
 </div>
-  <script src="https://unpkg.com/hydra-synth"></script>
+<script src="https://unpkg.com/hydra-synth"></script>
+
 <script>
 const hydra = new Hydra({
   canvas: document.getElementById("hydra-canvas"),
@@ -149,43 +150,36 @@ const hydra = new Hydra({
 
 speed = 0.14;
 
-scan = () =>
-  osc(220,0)
+pattern = () =>
+  osc(160,0.02,0)
     .kaleid(4)
-    .scale(1.6,0.28)
-    .rotate(0.06)
-    .pixelate(90,18)
-    .modulate(noise(8,0.18),0.18);
+    .rotate(0.12)
+    .scale(1.5,0.35)
+    .pixelate(120,30)
+    .modulate(noise(6,0.2),0.12);
 
-scan()
-  .scrollX(() => 0.12 + 0.09*Math.sin(time*0.33),0.025)
-  .scrollY(() => -0.04 + 0.06*Math.sin(time*0.21),0.018)
+pattern()
   .modulateScale(
-    osc(12,0)
+    osc(18,0.01,0)
       .rotate(1.57)
-      .pixelate(10,80),
-    0.55
+      .pixelate(12,90),
+    0.45
   )
   .modulateRotate(
-    osc(9,0)
-      .kaleid(3)
+    noise(5,0.3)
       .pixelate(18,18),
-    0.22
+    0.18
   )
   .diff(
-    noise(60,0.75)
-      .pixelate(110,24)
-      .thresh(0.68)
+    noise(45,0.6)
+      .pixelate(90,28)
+      .thresh(0.7)
   )
-  .modulate(
-    osc(35,0)
-      .rotate(1.57)
-      .pixelate(8,120),
-    0.08
-  )
-  .pixelate(260,70)
-  .contrast(2.8)
-  .brightness(-0.1)
+  .scrollX(() => 0.12 + 0.05*Math.sin(time*0.25),0.02)
+  .scrollY(() => -0.08 + 0.04*Math.cos(time*0.18),0.015)
+  .pixelate(240,80)
+  .contrast(2.6)
+  .brightness(-0.08)
   .saturate(0)
   .out();
 </script>
