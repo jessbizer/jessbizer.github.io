@@ -13,10 +13,30 @@
     box-sizing:border-box;
 }
 
-body{
+html,body{
+    width:100%;
+    min-height:100%;
     background:#000;
     color:#fff;
     font-family:"Courier New", monospace;
+}
+
+/* HYDRA BACKGROUND */
+
+#hydra-canvas{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    display:block;
+    z-index:0;
+}
+
+/* PAGE CONTENT */
+
+.content{
+    position:relative;
+    z-index:10;
     padding:25px;
 }
 
@@ -41,7 +61,7 @@ body{
 table{
     border-collapse:collapse;
     border:2px inset #888;
-    background:#000;
+    background:rgba(0,0,0,.75);
 }
 
 td{
@@ -51,8 +71,6 @@ td{
     text-align:center;
     vertical-align:middle;
 }
-
-/* Placeholder thumbnails */
 
 .thumb{
     color:#888;
@@ -69,6 +87,10 @@ img{
 </head>
 
 <body>
+
+<canvas id="hydra-canvas"></canvas>
+
+<div class="content">
 
 <nav class="menu">
     <div>everything is unreal</div>
@@ -116,6 +138,23 @@ img{
 </tr>
 
 </table>
+
+</div>
+
+<script src="https://unpkg.com/hydra-synth"></script>
+
+<script>
+const hydra = new Hydra({
+  canvas: document.getElementById("hydra-canvas"),
+  detectAudio: false
+});
+
+// REPLACE THIS WITH YOUR HYDRA PATCH
+osc(8,0.03,1.2)
+  .modulate(noise(3),0.15)
+  .color(1,1,1)
+  .out();
+</script>
 
 </body>
 </html>
