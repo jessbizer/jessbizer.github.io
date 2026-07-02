@@ -63,49 +63,34 @@
 <script>
 const hydra = new Hydra({
   canvas: document.getElementById("hydra-canvas"),
-  detectAudio:false
+  detectAudio: false
 });
 
-speed = 0.18;
-
-pattern = () =>
-  osc(180,0)
-    .kaleid(4)
-    .rotate(0.18)
-    .scale(1.6,0.32)
-    .scrollX(0.12)
-    .scrollY(-0.08)
-    .pixelate(120,35)
-    .modulate(noise(5,0.25),0.18);
-
-pattern()
-  .scrollX(() => 0.18 + 0.08*Math.sin(time*0.27),0.018)
-  .scrollY(() => -0.08 + 0.06*Math.cos(time*0.19),0.014)
-  .rotate(() => 0.18*Math.sin(time*0.11))
-  .modulateRotate(noise(5,0.2),0.35)
-  .modulateScale(
-    osc(10,0)
-      .rotate(1.57)
-      .pixelate(12,90),
-    0.45
+// Glitchy, geometric scan-like warped background
+osc(80, 0)
+  .kaleid(7)
+  .rotate(() => time * 0.11)
+  .scale(1.8, 0.4)
+  .scrollX(() => 0.2 + 0.15 * Math.sin(time * 0.13))
+  .scrollY(() => -0.12 + 0.1 * Math.cos(time * 0.17))
+  .pixelate(180, 60)
+  .modulate(
+    osc(120, 0)
+      .rotate(() => -time * 0.08)
+      .pixelate(40, 80)
+      .scrollX(() => 0.1 * Math.sin(time * 0.19)),
+    () => 0.35 + 0.2 * Math.sin(time * 0.09)
   )
-  .mult(
-    pattern()
-      .rotate(0.55)
-      .scrollX(0.33,-0.02)
-      .scrollY(-0.17,0.018)
-      .pixelate(80,35)
+  .modulateRotate(
+    noise(8, 0.3)
+      .pixelate(100, 20)
+      .scrollY(() => time * 0.05),
+    0.5
   )
-  .diff(
-    noise(45,.65)
-      .pixelate(90,24)
-      .thresh(.7)
-  )
-  .modulate(noise(120,.8),.06)
-  .pixelate(240,75)
-  .contrast(2.6)
-  .brightness(-0.1)
-  .saturate(0)
+  .pixelate(220, 90)
+  .contrast(2.2)
+  .saturate(0.8)
+  .brightness(-0.15)
   .out();
 </script>
 
