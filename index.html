@@ -6,6 +6,9 @@
 
 <title>everything is unreal, it's just a glitch</title>
 
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preload" href="https://unpkg.com/hydra-synth" as="script">
+
 <style>
 
 *{
@@ -148,82 +151,84 @@ html, body{
 </nav>
 
 <div class="stack">
-  <a href="glitch_site (5).jpg">
-    <img class="window w5" src="glitch_site (5).jpg" alt="Glitch image 5" width="300" height="200">
+  <a href="glitch_site (5).jpg" target="_blank" rel="noopener">
+    <img class="window w5" src="glitch_site (5).jpg" alt="Glitch image 5" width="300" height="200" loading="lazy" decoding="async" fetchpriority="low">
   </a>
-  <a href="glitch_site (1).jpg">
-    <img class="window w1" src="glitch_site (1).jpg" alt="Glitch image 1" width="300" height="200">
+  <a href="glitch_site (1).jpg" target="_blank" rel="noopener">
+    <img class="window w1" src="glitch_site (1).jpg" alt="Glitch image 1" width="300" height="200" loading="lazy" decoding="async" fetchpriority="low">
   </a>
-  <a href="glitch_site (2).jpg">
-    <img class="window w2" src="glitch_site (2).jpg" alt="Glitch image 2" width="300" height="200">
+  <a href="glitch_site (2).jpg" target="_blank" rel="noopener">
+    <img class="window w2" src="glitch_site (2).jpg" alt="Glitch image 2" width="300" height="200" loading="lazy" decoding="async" fetchpriority="low">
   </a>
-  <a href="glitch_site (3).jpg">
-    <img class="window w3" src="glitch_site (3).jpg" alt="Glitch image 3" width="300" height="200">
+  <a href="glitch_site (3).jpg" target="_blank" rel="noopener">
+    <img class="window w3" src="glitch_site (3).jpg" alt="Glitch image 3" width="300" height="200" loading="lazy" decoding="async" fetchpriority="low">
   </a>
-  <a href="glitch_site (6).jpg">
-    <img class="window w6" src="glitch_site (6).jpg" alt="Glitch image 6" width="300" height="200">
+  <a href="glitch_site (6).jpg" target="_blank" rel="noopener">
+    <img class="window w6" src="glitch_site (6).jpg" alt="Glitch image 6" width="300" height="200" loading="lazy" decoding="async" fetchpriority="low">
   </a>
-  <a href="glitch_site (7).jpg">
-    <img class="window w7" src="glitch_site (7).jpg" alt="Glitch image 7" width="300" height="200">
+  <a href="glitch_site (7).jpg" target="_blank" rel="noopener">
+    <img class="window w7" src="glitch_site (7).jpg" alt="Glitch image 7" width="300" height="200" loading="lazy" decoding="async" fetchpriority="low">
   </a>
-  <a href="glitch_site (8).jpg">
-    <img class="window w8" src="glitch_site (8).jpg" alt="Glitch image 8" width="300" height="200">
+  <a href="glitch_site (8).jpg" target="_blank" rel="noopener">
+    <img class="window w8" src="glitch_site (8).jpg" alt="Glitch image 8" width="300" height="200" loading="lazy" decoding="async" fetchpriority="low">
   </a>
-  <a href="glitch_site (9).jpg">
-    <img class="window w9" src="glitch_site (9).jpg" alt="Glitch image 9" width="300" height="200">
+  <a href="glitch_site (9).jpg" target="_blank" rel="noopener">
+    <img class="window w9" src="glitch_site (9).jpg" alt="Glitch image 9" width="300" height="200" loading="lazy" decoding="async" fetchpriority="low">
   </a>
 </div>
 
 
-<script src="https://unpkg.com/hydra-synth"></script>
+<script src="https://unpkg.com/hydra-synth" defer></script>
 
 <script>
-const hydra = new Hydra({
-  canvas: document.getElementById("hydra-canvas"),
-  detectAudio:false
+window.addEventListener('DOMContentLoaded', () => {
+  const hydra = new Hydra({
+    canvas: document.getElementById("hydra-canvas"),
+    detectAudio:false
+  });
+
+  speed = 0.18;
+
+  pattern = () =>
+    osc(180,0)
+      .kaleid(4)
+      .rotate(0.18)
+      .scale(1.6,0.32)
+      .scrollX(0.12)
+      .scrollY(-0.08)
+      .pixelate(120,35)
+      .modulate(noise(5,0.25),0.18);
+
+  pattern()
+    .scrollX(() => 0.18 + 0.08*Math.sin(time*0.27),0.018)
+    .scrollY(() => -0.08 + 0.06*Math.cos(time*0.19),0.014)
+    .rotate(() => 0.18*Math.sin(time*0.11))
+    .modulateRotate(noise(5,0.2),0.35)
+    .modulateScale(
+      osc(10,0)
+        .rotate(1.57)
+        .pixelate(12,90),
+      0.45
+    )
+    .mult(
+      pattern()
+        .rotate(0.55)
+        .scrollX(0.33,-0.02)
+        .scrollY(-0.17,0.018)
+        .pixelate(80,35)
+    )
+    .diff(
+      noise(45,.65)
+        .pixelate(90,24)
+        .thresh(.7)
+    )
+    .modulate(noise(120,.8),.06)
+    .pixelate(240,75)
+    .contrast(2.6)
+    .brightness(-0.1)
+    .saturate(0)
+    .out();
 });
-
-speed = 0.18;
-
-pattern = () =>
-  osc(180,0)
-    .kaleid(4)
-    .rotate(0.18)
-    .scale(1.6,0.32)
-    .scrollX(0.12)
-    .scrollY(-0.08)
-    .pixelate(120,35)
-    .modulate(noise(5,0.25),0.18);
-
-pattern()
-  .scrollX(() => 0.18 + 0.08*Math.sin(time*0.27),0.018)
-  .scrollY(() => -0.08 + 0.06*Math.cos(time*0.19),0.014)
-  .rotate(() => 0.18*Math.sin(time*0.11))
-  .modulateRotate(noise(5,0.2),0.35)
-  .modulateScale(
-    osc(10,0)
-      .rotate(1.57)
-      .pixelate(12,90),
-    0.45
-  )
-  .mult(
-    pattern()
-      .rotate(0.55)
-      .scrollX(0.33,-0.02)
-      .scrollY(-0.17,0.018)
-      .pixelate(80,35)
-  )
-  .diff(
-    noise(45,.65)
-      .pixelate(90,24)
-      .thresh(.7)
-  )
-  .modulate(noise(120,.8),.06)
-  .pixelate(240,75)
-  .contrast(2.6)
-  .brightness(-0.1)
-  .saturate(0)
-  .out();
 </script>
 </body>
 </html>
