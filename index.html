@@ -89,6 +89,10 @@ html, body{
   height:400px;
 }
 
+.window-link{
+  text-decoration:none;
+}
+
 .window{
   position:absolute;
   width:300px;
@@ -96,6 +100,7 @@ html, body{
   background:#000;
   border:2px solid #fff;
   overflow:hidden;
+  transition:opacity 0.15s linear;
 }
 
 .window img{
@@ -107,46 +112,6 @@ html, body{
 
 .window:hover{
   opacity:0.5;
-}
-
-.w1{
-  left:0;
-  top:0;
-}
-
-.w2{
-  left:150px;
-  top:50px;
-}
-
-.w3{
-  left:300px;
-  top:100px;
-}
-
-.w5{
-  left:50px;
-  top:150px;
-}
-
-.w6{
-  left:200px;
-  top:200px;
-}
-
-.w7{
-  left:350px;
-  top:150px;
-}
-
-.w8{
-  left:100px;
-  top:100px;
-}
-
-.w9{
-  left:250px;
-  top:50px;
 }
 
 </style>
@@ -169,54 +134,75 @@ html, body{
 </nav>
 
 <div class="stack">
-  <div class="window-container">
-    <a href="glitch_site (1).jpg" target="_blank" rel="noopener" class="window-link">
-      <div class="window w1">
-        <img src="glitch_site (1).jpg" alt="Glitch image 1">
-      </div>
-    </a>
-    <a href="glitch_site (2).jpg" target="_blank" rel="noopener" class="window-link">
-      <div class="window w2">
-        <img src="glitch_site (2).jpg" alt="Glitch image 2">
-      </div>
-    </a>
-    <a href="glitch_site (3).jpg" target="_blank" rel="noopener" class="window-link">
-      <div class="window w3">
-        <img src="glitch_site (3).jpg" alt="Glitch image 3">
-      </div>
-    </a>
-    <a href="glitch_site (5).jpg" target="_blank" rel="noopener" class="window-link">
-      <div class="window w5">
-        <img src="glitch_site (5).jpg" alt="Glitch image 5">
-      </div>
-    </a>
-    <a href="glitch_site (6).jpg" target="_blank" rel="noopener" class="window-link">
-      <div class="window w6">
-        <img src="glitch_site (6).jpg" alt="Glitch image 6">
-      </div>
-    </a>
-    <a href="glitch_site (7).jpg" target="_blank" rel="noopener" class="window-link">
-      <div class="window w7">
-        <img src="glitch_site (7).jpg" alt="Glitch image 7">
-      </div>
-    </a>
-    <a href="glitch_site (8).jpg" target="_blank" rel="noopener" class="window-link">
-      <div class="window w8">
-        <img src="glitch_site (8).jpg" alt="Glitch image 8">
-      </div>
-    </a>
-    <a href="glitch_site (9).jpg" target="_blank" rel="noopener" class="window-link">
-      <div class="window w9">
-        <img src="glitch_site (9).jpg" alt="Glitch image 9">
-      </div>
-    </a>
+  <div class="window-container" id="windowContainer">
+    <!-- Images will be inserted here by JavaScript -->
   </div>
 </div>
 
 <script>
 (function(){
+  // Image data
+  const images = [
+    { src: 'glitch_site (1).jpg', alt: 'Glitch image 1' },
+    { src: 'glitch_site (2).jpg', alt: 'Glitch image 2' },
+    { src: 'glitch_site (3).jpg', alt: 'Glitch image 3' },
+    { src: 'glitch_site (5).jpg', alt: 'Glitch image 5' },
+    { src: 'glitch_site (6).jpg', alt: 'Glitch image 6' },
+    { src: 'glitch_site (7).jpg', alt: 'Glitch image 7' },
+    { src: 'glitch_site (8).jpg', alt: 'Glitch image 8' },
+    { src: 'glitch_site (9).jpg', alt: 'Glitch image 9' }
+  ];
+
+  // Position presets
+  const positions = [
+    { left: 0, top: 0 },
+    { left: 150, top: 50 },
+    { left: 300, top: 100 },
+    { left: 50, top: 150 },
+    { left: 200, top: 200 },
+    { left: 350, top: 150 },
+    { left: 100, top: 100 },
+    { left: 250, top: 50 }
+  ];
+
+  // Fisher-Yates shuffle algorithm
+  function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  // Shuffle images
+  const shuffledImages = shuffleArray(images);
+
+  // Render images
+  const container = document.getElementById('windowContainer');
+  shuffledImages.forEach((image, index) => {
+    const link = document.createElement('a');
+    link.href = image.src;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.className = 'window-link';
+
+    const div = document.createElement('div');
+    div.className = 'window';
+    div.style.left = positions[index].left + 'px';
+    div.style.top = positions[index].top + 'px';
+
+    const img = document.createElement('img');
+    img.src = image.src;
+    img.alt = image.alt;
+
+    div.appendChild(img);
+    link.appendChild(div);
+    container.appendChild(link);
+  });
+
+  // Quality select handler
   var qualitySelect = document.getElementById('quality-select');
-  
   if(qualitySelect){
     qualitySelect.addEventListener('change', function(){
       var quality = qualitySelect.value;
