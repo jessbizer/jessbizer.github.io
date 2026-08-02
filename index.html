@@ -279,7 +279,8 @@ html, body{
   var storedVisual = null;
   var storedQuality = null;
   try{ storedVisual = localStorage.getItem('hydraVisuals'); storedQuality = localStorage.getItem('hydraQuality'); }catch(e){}
-  var visualsEnabled = (storedVisual !== 'off'); // default on
+  // default to visuals OFF for faster initial load unless user opted in
+  var visualsEnabled = (storedVisual === 'on'); // default off
   var quality = storedQuality || 'medium'; // default medium
   shouldLoadHydra = visualsEnabled;
 
