@@ -48,16 +48,6 @@ html, body{
   margin-bottom:6px;
 }
 
-.quality-select{
-  display:inline-block;
-  margin-left:8px;
-  padding:2px 6px;
-  background:#111;
-  color:#fff;
-  border:1px solid #333;
-  font-size:13px;
-}
-
 /* HYDRA BACKGROUND */
 
 #hydra-canvas{
@@ -66,7 +56,7 @@ html, body{
   width:100vw;
   height:100vh;
   z-index:0;
-  display:none;
+  display:block;
   opacity:0;
   background: linear-gradient(180deg,#000 0%, #080808 100%);
 }
@@ -120,17 +110,14 @@ html, body{
 
 <body>
 
+<canvas id="hydra-canvas"></canvas>
+
 <nav class="menu">
   <a href="index.html">everything is unreal</a><br>
   <a href="images.html">images</a><br>
   <a href="video.html">video</a><br>
   <a href="audio.html">audio</a><br>
   <a href="text.html">text</a>
-  <select id="quality-select" class="quality-select" aria-label="Visual quality">
-    <option value="high">High</option>
-    <option value="medium">Medium</option>
-    <option value="low">Low</option>
-  </select>
 </nav>
 
 <div class="stack">
@@ -201,13 +188,104 @@ html, body{
     container.appendChild(link);
   });
 
-  // Quality select handler
-  var qualitySelect = document.getElementById('quality-select');
-  if(qualitySelect){
-    qualitySelect.addEventListener('change', function(){
-      var quality = qualitySelect.value;
-      try{ localStorage.setItem('hydraQuality', quality); }catch(e){}
-    }, {passive:true});
+  // Hydra background
+  var hydraScriptLoaded = false;
+  var hydraInitRun = false;
+
+  function loadScript(cb){
+    if(hydraScriptLoaded) return;
+    hydraScriptLoaded = true;
+    var hydraScriptElement = document.createElement('script');
+    hydraScriptElement.src = 'https://unpkg.com/hydra-synth';
+    hydraScriptElement.onload = function(){ try{ cb(); }catch(e){ console.error(e); } };
+    hydraScriptElement.onerror = function(){ console.warn('Failed to load hydra-synth'); };
+    document.head.appendChild(hydraScriptElement);
+  }
+
+  function initHydra(){
+    if(hydraInitRun) return;
+    hydraInitRun = true;
+    try{
+      var canvas = document.getElementById('hydra-canvas');
+      canvas.style.display = 'block';
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+
+      const hydra = new Hydra({ canvas: canvas, detectAudio: false });
+      window._hydra = hydra;
+
+      speed = 0.18;
+
+      pattern = () =>
+        osc(180,0)
+          .kaleid(4)
+          .rotate(0.18)
+          .scale(1.6,0.32)
+          .scrollX(0.12)
+          .scrollY(-0.08)
+          .pixelate(120,35)
+          .modulate(noise(5,0.25),0.18);
+
+      pattern()
+        .scrollX(() => 0.18 + 0.08*Math.sin(time*0.27),0.018)
+        .scrollY(() => -0.08 + 0.06*Math.cos(time*0.19),0.014)
+        .rotate(() => 0.18*Math.sin(time*0.11))
+        .modulateRotate(noise(5,0.2),0.35)
+        .modulateScale(
+          osc(10,0).rotate(1.57).pixelate(12,90),
+          0.45
+        )
+        .mult(
+          pattern().rotate(0.55).scrollX(0.33,-0.02).scrollY(-0.17,0.018).pixelate(80,35)
+        )
+        .diff(
+          noise(45,.65).pixelate(90,24).thresh(.7)
+        )
+        .modulate(noise(120,.8),.06)
+        .pixelate(240,75)
+        .contrast(2.6)
+        .brightness(-0.1)
+        .saturate(0)
+        .out();
+
+      requestAnimationFrame(()=>{ canvas.style.transition = 'opacity 400ms ease'; canvas.style.opacity = '1'; });
+
+      document.addEventListener('visibilitychange', function(){
+        if(document.hidden){
+          try{ if(window._hydra && typeof window._hydra.pause === 'function') window._hydra.pause(); }
+          catch(e){}
+        } else {
+          try{ if(window._hydra && typeof window._hydra.play === 'function') window._hydra.play(); }
+          catch(e){}
+        }
+      });
+
+      var onResize = function(){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        try{ if(window._hydra && typeof window._hydra.setResolution === 'function') window._hydra.setResolution(canvas.width, canvas.height); }catch(e){}
+      };
+      window.addEventListener('resize', onResize);
+
+    }catch(e){ console.error(e); }
+  }
+
+  function scheduleLoad(){
+    if('requestIdleCallback' in window){
+      requestIdleCallback(function(){ loadScript(initHydra); }, {timeout:500});
+    } else {
+      requestAnimationFrame(()=>{ setTimeout(function(){ loadScript(initHydra); }, 200); });
+    }
+  }
+
+  if(document.readyState === 'complete' || document.readyState === 'interactive'){
+    scheduleLoad();
+  } else {
+    window.addEventListener('DOMContentLoaded', function(){ scheduleLoad(); }, {once:true});
   }
 })();
 </script>
