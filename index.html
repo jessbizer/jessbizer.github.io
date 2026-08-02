@@ -7,7 +7,6 @@
 <title>everything is unreal, it's just a glitch</title>
 
 <link rel="preconnect" href="https://unpkg.com">
-<link rel="preload" href="https://unpkg.com/hydra-synth" as="script">
 
 <style>
 
@@ -58,6 +57,8 @@ html, body{
   height:100vh;
   z-index:0;
   display:block;
+  opacity:0; /* hide until hydra is ready */
+  background: linear-gradient(180deg,#000 0%, #080808 100%); /* lightweight fallback */
 }
 
 /* IMAGE STACK */
@@ -210,57 +211,99 @@ html, body{
 </div>
 
 
-<script src="https://unpkg.com/hydra-synth" defer></script>
-
 <script>
-window.addEventListener('DOMContentLoaded', () => {
-  const hydra = new Hydra({
-    canvas: document.getElementById("hydra-canvas"),
-    detectAudio:false
-  });
+// Lazy-load hydra-synth after first paint / during idle time to improve initial load
+(function(){
+  function loadScript(cb){
+    var s = document.createElement('script');
+    s.src = 'https://unpkg.com/hydra-synth';
+    s.onload = cb;
+    s.onerror = function(){ console.warn('Failed to load hydra-synth'); };
+    document.head.appendChild(s);
+  }
 
-  speed = 0.18;
+  function initHydra(){
+    try{
+      var canvas = document.getElementById('hydra-canvas');
+      // set canvas internal resolution for crispness
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.round(window.innerWidth * dpr);
+      canvas.height = Math.round(window.innerHeight * dpr);
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
 
-  pattern = () =>
-    osc(180,0)
-      .kaleid(4)
-      .rotate(0.18)
-      .scale(1.6,0.32)
-      .scrollX(0.12)
-      .scrollY(-0.08)
-      .pixelate(120,35)
-      .modulate(noise(5,0.25),0.18);
+      // create hydra instance
+      const hydra = new Hydra({
+        canvas: canvas,
+        detectAudio: false
+      });
 
-  pattern()
-    .scrollX(() => 0.18 + 0.08*Math.sin(time*0.27),0.018)
-    .scrollY(() => -0.08 + 0.06*Math.cos(time*0.19),0.014)
-    .rotate(() => 0.18*Math.sin(time*0.11))
-    .modulateRotate(noise(5,0.2),0.35)
-    .modulateScale(
-      osc(10,0)
-        .rotate(1.57)
-        .pixelate(12,90),
-      0.45
-    )
-    .mult(
+      // pattern (unchanged)
+      speed = 0.18;
+
+      pattern = () =>
+        osc(180,0)
+          .kaleid(4)
+          .rotate(0.18)
+          .scale(1.6,0.32)
+          .scrollX(0.12)
+          .scrollY(-0.08)
+          .pixelate(120,35)
+          .modulate(noise(5,0.25),0.18);
+
       pattern()
-        .rotate(0.55)
-        .scrollX(0.33,-0.02)
-        .scrollY(-0.17,0.018)
-        .pixelate(80,35)
-    )
-    .diff(
-      noise(45,.65)
-        .pixelate(90,24)
-        .thresh(.7)
-    )
-    .modulate(noise(120,.8),.06)
-    .pixelate(240,75)
-    .contrast(2.6)
-    .brightness(-0.1)
-    .saturate(0)
-    .out();
-});
+        .scrollX(() => 0.18 + 0.08*Math.sin(time*0.27),0.018)
+        .scrollY(() => -0.08 + 0.06*Math.cos(time*0.19),0.014)
+        .rotate(() => 0.18*Math.sin(time*0.11))
+        .modulateRotate(noise(5,0.2),0.35)
+        .modulateScale(
+          osc(10,0)
+            .rotate(1.57)
+            .pixelate(12,90),
+          0.45
+        )
+        .mult(
+          pattern()
+            .rotate(0.55)
+            .scrollX(0.33,-0.02)
+            .scrollY(-0.17,0.018)
+            .pixelate(80,35)
+        )
+        .diff(
+          noise(45,.65)
+            .pixelate(90,24)
+            .thresh(.7)
+        )
+        .modulate(noise(120,.8),.06)
+        .pixelate(240,75)
+        .contrast(2.6)
+        .brightness(-0.1)
+        .saturate(0)
+        .out();
+
+      // fade canvas in
+      requestAnimationFrame(()=>{ canvas.style.transition = 'opacity 400ms ease'; canvas.style.opacity = '1'; });
+    }catch(e){ console.error(e); }
+  }
+
+  function scheduleLoad(){
+    // Prefer requestIdleCallback for non-blocking load
+    if('requestIdleCallback' in window){
+      requestIdleCallback(function(){ loadScript(initHydra); }, {timeout: 500});
+    } else {
+      // fall back to setTimeout after first paint
+      requestAnimationFrame(()=>{ setTimeout(function(){ loadScript(initHydra); }, 200); });
+    }
+  }
+
+  // Wait for first paint + minimal interactivity before loading heavy script
+  if(document.readyState === 'complete' || document.readyState === 'interactive'){
+    scheduleLoad();
+  } else {
+    window.addEventListener('DOMContentLoaded', scheduleLoad, {once:true});
+  }
+})();
 </script>
+
 </body>
 </html>
