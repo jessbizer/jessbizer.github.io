@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>everything is unreal // images</title>
+
+<link rel="stylesheet" href="style.css">
+<style>
+  .thumb img {
+    max-width: 125px;
+    height: auto;
+    display: block;
+  }
+  table { border-collapse: collapse; }
+  td { padding: 8px; }
+</style>
+</head>
+
+<body>
+
+<canvas id="hydra-canvas"></canvas>
+
+<nav class="menu">
+  <a href="index.html">everything is unreal</a><br>
+  <a href="images.html">images</a><br>
+  <a href="video.html">video</a><br>
+  <a href="audio.html">audio</a><br>
+  <a href="text.html">text</a>
+</nav>
+
+<div class="gallery">
+
+<table>
+<tr>
+<td><a href="IMG_4349.jpeg" target="_blank"><div class="thumb"><img src="IMG_4349.jpeg" alt="image 01" loading="lazy"></div></a></td>
+<td><a href="IMG_4419.jpeg" target="_blank"><div class="thumb"><img src="IMG_4419.jpeg" alt="image 02" loading="lazy"></div></a></td>
+<td><a href="IMG_4436.jpeg" target="_blank"><div class="thumb"><img src="IMG_4436.jpeg" alt="image 03" loading="lazy"></div></a></td>
+<td><a href="IMG_4448.jpeg" target="_blank"><div class="thumb"><img src="IMG_4448.jpeg" alt="image 04" loading="lazy"></div></a></td>
+<td><a href="IMG_4458.jpeg" target="_blank"><div class="thumb"><img src="IMG_4458.jpeg" alt="image 05" loading="lazy"></div></a></td>
+</tr>
+
+<tr>
+<td><a href="IMG_4490.jpeg" target="_blank"><div class="thumb"><img src="IMG_4490.jpeg" alt="image 06" loading="lazy"></div></a></td>
+<td><a href="IMG_4526.jpeg" target="_blank"><div class="thumb"><img src="IMG_4526.jpeg" alt="image 07" loading="lazy"></div></a></td>
+<td><a href="IMG_4537.jpeg" target="_blank"><div class="thumb"><img src="IMG_4537.jpeg" alt="image 08" loading="lazy"></div></a></td>
+<td><a href="IMG_4547.jpeg" target="_blank"><div class="thumb"><img src="IMG_4547.jpeg" alt="image 09" loading="lazy"></div></a></td>
+<td><a href="IMG_4745.jpeg" target="_blank"><div class="thumb"><img src="IMG_4745.jpeg" alt="image 10" loading="lazy"></div></a></td>
+</tr>
+
+<tr>
+<td><a href="IMG_4749.jpeg" target="_blank"><div class="thumb"><img src="IMG_4749.jpeg" alt="image 11" loading="lazy"></div></a></td>
+<td><a href="IMG_4753.jpeg" target="_blank"><div class="thumb"><img src="IMG_4753.jpeg" alt="image 12" loading="lazy"></div></a></td>
+<td><a href="IMG_4764.jpeg" target="_blank"><div class="thumb"><img src="IMG_4764.jpeg" alt="image 13" loading="lazy"></div></a></td>
+<td><a href="IMG_4769.jpeg" target="_blank"><div class="thumb"><img src="IMG_4769.jpeg" alt="image 14" loading="lazy"></div></a></td>
+<td></td>
+</tr>
+
+<!-- Newly added images (uploaded today) -->
+<tr>
+<td><a href="Bazaart_276E581C-1F57-4C8C-BF48-1F9A034455C6.jpeg" target="_blank"><div class="thumb"><img src="Bazaart_276E581C-1F57-4C8C-BF48-1F9A034455C6.jpeg" alt="image 15" loading="lazy"></div></a></td>
+<td><a href="IMG_3878.jpeg" target="_blank"><div class="thumb"><img src="IMG_3878.jpeg" alt="image 16" loading="lazy"></div></a></td>
+<td><a href="IMG_3945.jpeg" target="_blank"><div class="thumb"><img src="IMG_3945.jpeg" alt="image 17" loading="lazy"></div></a></td>
+<td><a href="IMG_3959.jpeg" target="_blank"><div class="thumb"><img src="IMG_3959.jpeg" alt="image 18" loading="lazy"></div></a></td>
+<td><a href="IMG_3964.jpeg" target="_blank"><div class="thumb"><img src="IMG_3964.jpeg" alt="image 19" loading="lazy"></div></a></td>
+</tr>
+
+<tr>
+<td><a href="IMG_4343.jpeg" target="_blank"><div class="thumb"><img src="IMG_4343.jpeg" alt="image 20" loading="lazy"></div></a></td>
+<td><a href="IMG_5431.jpeg" target="_blank"><div class="thumb"><img src="IMG_5431.jpeg" alt="image 21" loading="lazy"></div></a></td>
+<td><a href="IMG_5539.jpeg" target="_blank"><div class="thumb"><img src="IMG_5539.jpeg" alt="image 22" loading="lazy"></div></a></td>
+<td><a href="IMG_5625.jpeg" target="_blank"><div class="thumb"><img src="IMG_5625.jpeg" alt="image 23" loading="lazy"></div></a></td>
+<td><a href="IMG_5669.jpeg" target="_blank"><div class="thumb"><img src="IMG_5669.jpeg" alt="image 24" loading="lazy"></div></a></td>
+</tr>
+
+<tr>
+<td><a href="IMG_5688.jpeg" target="_blank"><div class="thumb"><img src="IMG_5688.jpeg" alt="image 25" loading="lazy"></div></a></td>
+<td><a href="IMG_5811.jpeg" target="_blank"><div class="thumb"><img src="IMG_5811.jpeg" alt="image 26" loading="lazy"></div></a></td>
+<td><a href="IMG_5815.jpeg" target="_blank"><div class="thumb"><img src="IMG_5815.jpeg" alt="image 27" loading="lazy"></div></a></td>
+<td><a href="IMG_8141.jpeg" target="_blank"><div class="thumb"><img src="IMG_8141.jpeg" alt="image 28" loading="lazy"></div></a></td>
+<td></td>
+</tr>
+</table>
+
+</div>
+
+<script src="https://unpkg.com/hydra-synth"></script>
+
+<script>
+const hydra = new Hydra({
+  canvas: document.getElementById("hydra-canvas"),
+  detectAudio: false
+});
+
+// Glitchy, geometric scan-like warped background
+osc(80, 0)
+  .kaleid(7)
+  .rotate(() => time * 0.11)
+  .scale(1.8, 0.4)
+  .scrollX(() => 0.2 + 0.15 * Math.sin(time * 0.13))
+  .scrollY(() => -0.12 + 0.1 * Math.cos(time * 0.17))
+  .pixelate(180, 60)
+  .modulate(
+    osc(120, 0)
+      .rotate(() => -time * 0.08)
+      .pixelate(40, 80)
+      .scrollX(() => 0.1 * Math.sin(time * 0.19)),
+    () => 0.35 + 0.2 * Math.sin(time * 0.09)
+  )
+  .modulateRotate(
+    noise(8, 0.3)
+      .pixelate(100, 20)
+      .scrollY(() => time * 0.05),
+    0.5
+  )
+  .pixelate(220, 90)
+  .contrast(2.2)
+  .saturate(0.8)
+  .brightness(-0.15)
+  .out();
+</script>
+
+</body>
+</html>
 
