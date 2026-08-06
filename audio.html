@@ -4,17 +4,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>everything is unreal // images</title>
+<title>everything is unreal // audio</title>
 
 <link rel="stylesheet" href="style.css">
 <style>
-  .thumb img {
-    max-width: 125px;
-    height: auto;
-    display: block;
+  .audio-list {
+    position: absolute;
+    top: 120px;
+    left: 180px;
+    z-index: 20;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.8;
   }
-  table { border-collapse: collapse; }
-  td { padding: 8px; }
+
+  .audio-list a {
+    display: block;
+    color: #888;
+    text-decoration: none;
+    padding: 8px 0;
+    background: black;
+    width: fit-content;
+  }
+
+  .audio-list a:hover {
+    color: white;
+    text-decoration: underline;
+  }
 </style>
 </head>
 
@@ -30,6 +46,16 @@
   <a href="text.html">text</a>
 </nav>
 
+<div class="audio-list">
+  <a href="file_name_glitch_01.mp3" download>file_name_glitch_01.mp3</a>
+  <a href="file_name_glitch_02.mp3" download>file_name_glitch_02.mp3</a>
+  <a href="file_name_glitch_03.mp3" download>file_name_glitch_03.mp3</a>
+  <a href="file_name_glitch_04.mp3" download>file_name_glitch_04.mp3</a>
+  <a href="file_name_glitch_05.mp3" download>file_name_glitch_05.mp3</a>
+  <a href="file_name_glitch_06.mp3" download>file_name_glitch_06.mp3</a>
+  <a href="file_name_glitch_07.mp3" download>file_name_glitch_07.mp3</a>
+  <a href="file_name_glitch_08.mp3" download>file_name_glitch_08.mp3</a>
+</div>
 
 <script src="https://unpkg.com/hydra-synth"></script>
 
