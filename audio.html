@@ -31,6 +31,19 @@
     color: white;
     text-decoration: underline;
   }
+
+  /* Styles for missing audio links (added) */
+  .audio-list a.missing {
+    color: #444;
+    text-decoration: none;
+    cursor: default;
+  }
+  .audio-list a.missing::after {
+    content: "  (missing)";
+    color: #c66;
+    font-style: italic;
+    padding-left: 6px;
+  }
 </style>
 </head>
 
@@ -56,6 +69,34 @@
   <a href="file_name_glitch_07.mp3" download>file_name_glitch_07.mp3</a>
   <a href="file_name_glitch_08.mp3" download>file_name_glitch_08.mp3</a>
 </div>
+
+<!-- Script to detect missing audio files and mark links as missing -->
+<script>
+  (async function checkAudioLinks() {
+    const links = Array.from(document.querySelectorAll('.audio-list a'));
+    for (const a of links) {
+      const url = a.getAttribute('href');
+      if (!url) continue;
+      try {
+        // Use HEAD to avoid downloading the file body
+        const res = await fetch(url, { method: 'HEAD' });
+        if (!res.ok) {
+          // file missing — mark and disable download
+          a.classList.add('missing');
+          a.removeAttribute('download');
+          a.setAttribute('aria-disabled', 'true');
+          a.addEventListener('click', e => e.preventDefault());
+        }
+      } catch (err) {
+        // network error — treat as missing
+        a.classList.add('missing');
+        a.removeAttribute('download');
+        a.setAttribute('aria-disabled', 'true');
+        a.addEventListener('click', e => e.preventDefault());
+      }
+    }
+  })();
+</script>
 
 <script src="https://unpkg.com/hydra-synth"></script>
 
