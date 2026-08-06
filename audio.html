@@ -8,6 +8,8 @@
 
 <link rel="stylesheet" href="style.css">
 <style>
+  html, body { height: 100%; margin: 0; }
+  #hydra-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; }
   .audio-list {
     position: absolute;
     top: 120px;
@@ -55,14 +57,14 @@
 </nav>
 
 <div class="audio-list">
-  <a href="file_name_glitch_01.mp3" download><img src="play_button.JPEG" alt="play"><span>file_name_glitch_01.mp3</span></a>
-  <a href="file_name_glitch_02.mp3" download><img src="play_button.JPEG" alt="play"><span>file_name_glitch_02.mp3</span></a>
-  <a href="file_name_glitch_03.mp3" download><img src="play_button.JPEG" alt="play"><span>file_name_glitch_03.mp3</span></a>
-  <a href="file_name_glitch_04.mp3" download><img src="play_button.JPEG" alt="play"><span>file_name_glitch_04.mp3</span></a>
-  <a href="file_name_glitch_05.mp3" download><img src="play_button.JPEG" alt="play"><span>file_name_glitch_05.mp3</span></a>
-  <a href="file_name_glitch_06.mp3" download><img src="play_button.JPEG" alt="play"><span>file_name_glitch_06.mp3</span></a>
-  <a href="file_name_glitch_07.mp3" download><img src="play_button.JPEG" alt="play"><span>file_name_glitch_07.mp3</span></a>
-  <a href="file_name_glitch_08.mp3" download><img src="play_button.JPEG" alt="play"><span>file_name_glitch_08.mp3</span></a>
+  <a href="file_name_glitch_01.mp3" download><img src="play_button.jpeg" alt="play"><span>file_name_glitch_01.mp3</span></a>
+  <a href="file_name_glitch_02.mp3" download><img src="play_button.jpeg" alt="play"><span>file_name_glitch_02.mp3</span></a>
+  <a href="file_name_glitch_03.mp3" download><img src="play_button.jpeg" alt="play"><span>file_name_glitch_03.mp3</span></a>
+  <a href="file_name_glitch_04.mp3" download><img src="play_button.jpeg" alt="play"><span>file_name_glitch_04.mp3</span></a>
+  <a href="file_name_glitch_05.mp3" download><img src="play_button.jpeg" alt="play"><span>file_name_glitch_05.mp3</span></a>
+  <a href="file_name_glitch_06.mp3" download><img src="play_button.jpeg" alt="play"><span>file_name_glitch_06.mp3</span></a>
+  <a href="file_name_glitch_07.mp3" download><img src="play_button.jpeg" alt="play"><span>file_name_glitch_07.mp3</span></a>
+  <a href="file_name_glitch_08.mp3" download><img src="play_button.jpeg" alt="play"><span>file_name_glitch_08.mp3</span></a>
 </div>
 
 <script src="https://unpkg.com/hydra-synth"></script>
@@ -73,7 +75,7 @@ const hydra = new Hydra({
   detectAudio: false
 });
 
-// Glitchy, geometric scan-like warped background with colored flecks
+// Glitchy, geometric scan-like warped background with more visible colored flecks
 const base = osc(80, 0)
   .kaleid(7)
   .rotate(() => time * 0.11)
@@ -96,36 +98,35 @@ const base = osc(80, 0)
   )
   .pixelate(220, 90)
   .contrast(2.2)
-  .saturate(0.8)
-  .brightness(-0.15);
+  .saturate(0.9)
+  .brightness(-0.05);
 
-// Small sparse flecks created from high-threshold noise; three layers for different colors
-const flecksR = noise(60, 0.6)
-  .thresh(() => 0.96 + 0.015 * Math.sin(time * 0.9))
-  .pixelate(600, 600)
-  .color(1.0, 0.35, 0.35)
-  .scrollX(() => 0.01 * Math.sin(time * 0.7));
+// Flecks tuned to be more visible
+const flecksR = noise(30, 0.8)
+  .thresh(() => 0.88 + 0.03 * Math.sin(time * 0.9))
+  .pixelate(300, 300)
+  .color(1.0, 0.18, 0.18)
+  .scrollX(() => 0.02 * Math.sin(time * 0.7));
 
-const flecksG = noise(55, 0.55)
-  .thresh(() => 0.955 + 0.012 * Math.cos(time * 1.1))
-  .pixelate(800, 800)
-  .color(0.35, 1.0, 0.5)
-  .scrollY(() => 0.015 * Math.cos(time * 0.6));
+const flecksG = noise(28, 0.7)
+  .thresh(() => 0.885 + 0.025 * Math.cos(time * 1.1))
+  .pixelate(350, 350)
+  .color(0.18, 1.0, 0.6)
+  .scrollY(() => 0.02 * Math.cos(time * 0.6));
 
-const flecksB = noise(50, 0.5)
-  .thresh(() => 0.958 + 0.01 * Math.sin(time * 1.3))
-  .pixelate(700, 700)
-  .color(0.45, 0.55, 1.0)
+const flecksB = noise(26, 0.65)
+  .thresh(() => 0.886 + 0.02 * Math.sin(time * 1.3))
+  .pixelate(320, 320)
+  .color(0.4, 0.5, 1.0)
   .rotate(() => time * 0.03);
 
-// Blend flecks on top of the base background and add a very subtle grain
 base
-  .blend(flecksR, 0.12)
-  .blend(flecksG, 0.09)
-  .blend(flecksB, 0.07)
-  .add(noise(2, 0.04).color(0.02, 0.02, 0.02), 0.02)
+  .blend(flecksR, 0.22)
+  .blend(flecksG, 0.18)
+  .blend(flecksB, 0.14)
+  .add(noise(2, 0.05).color(0.03, 0.03, 0.03), 0.03)
   .contrast(2.2)
-  .saturate(0.9)
+  .saturate(1.15)
   .out();
 </script>
 
