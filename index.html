@@ -91,4 +91,171 @@
 
   <nav class="menu">
     <a href="index.html">everything is unreal</a><br>
-    <a href="images.html">images</a><br>*
+    <a href="images.html">images</a><br>
+    <a href="video.html">video</a><br>
+    <a href="audio.html">audio</a><br>
+    <a href="text.html">text</a>
+  </nav>
+
+  <div class="stack">
+    <div class="window-container" id="windowContainer"></div>
+  </div>
+
+  <script>
+    (function () {
+      const images = [
+        { src: "glitch_site (2).jpg", alt: "Glitch image 2" },
+        { src: "glitch_site (3).jpg", alt: "Glitch image 3" },
+        { src: "glitch_site (5).jpg", alt: "Glitch image 5" },
+        { src: "glitch_site (6).jpg", alt: "Glitch image 6" },
+        { src: "IMG_3964.jpeg", alt: "IMG 3964" },
+        { src: "IMG_8141.jpeg", alt: "IMG 8141" }
+      ];
+
+      const positions = [
+        { left: 0, top: 0 },
+        { left: 150, top: 50 },
+        { left: 300, top: 100 },
+        { left: 50, top: 150 },
+        { left: 200, top: 200 },
+        { left: 350, top: 150 },
+        { left: 100, top: 100 },
+        { left: 250, top: 50 },
+        { left: 400, top: 120 }
+      ];
+
+      function shuffleArray(array){
+        const a = [...array];
+        for(let i = a.length - 1; i > 0; i--){
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function renderImages(){
+        const container = document.getElementById("windowContainer");
+        if(!container) return;
+        container.innerHTML = "";
+
+        const shuffled = shuffleArray(images);
+
+        shuffled.forEach((image, index) => {
+          const pos = positions[index % positions.length];
+
+          const link = document.createElement("a");
+          link.href = image.src;
+          link.target = "_blank";
+          link.rel = "noopener";
+          link.className = "window-link";
+
+          const win = document.createElement("div");
+          win.className = "window";
+          win.style.left = pos.left + "px";
+          win.style.top = pos.top + "px";
+
+          const img = document.createElement("img");
+          img.src = image.src;
+          img.alt = image.alt;
+
+          win.appendChild(img);
+          link.appendChild(win);
+          container.appendChild(link);
+        });
+      }
+
+      let hydraLoaded = false;
+      let hydraStarted = false;
+
+      function loadHydra(cb){
+        if(hydraLoaded) return;
+        hydraLoaded = true;
+
+        const s = document.createElement("script");
+        s.src = "https://unpkg.com/hydra-synth";
+        s.onload = () => { try { cb(); } catch(e){ console.error(e); } };
+        s.onerror = () => { console.warn("Failed to load hydra-synth"); };
+        document.head.appendChild(s);
+      }
+
+      function initHydra(){
+        if(hydraStarted) return;
+        hydraStarted = true;
+
+        try{
+          const canvas = document.getElementById("hydra-canvas");
+          if(!canvas) return;
+
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          canvas.style.width = window.innerWidth + "px";
+          canvas.style.height = window.innerHeight + "px";
+
+          const hydra = new Hydra({ canvas, detectAudio:false });
+          window._hydra = hydra;
+          window.speed = 0.18;
+
+          const pattern = () =>
+            osc(180,0)
+              .kaleid(4)
+              .rotate(0.18)
+              .scale(1.6,0.32)
+              .scrollX(0.12)
+              .scrollY(-0.08)
+              .pixelate(120,35)
+              .modulate(noise(5,0.25),0.18);
+
+          pattern()
+            .scrollX(() => 0.18 + 0.08*Math.sin(time*0.27),0.018)
+            .scrollY(() => -0.08 + 0.06*Math.cos(time*0.19),0.014)
+            .rotate(() => 0.18*Math.sin(time*0.11))
+            .modulateRotate(noise(5,0.2),0.35)
+            .modulateScale(osc(10,0).rotate(1.57).pixelate(12,90),0.45)
+            .mult(pattern().rotate(0.55).scrollX(0.33,-0.02).scrollY(-0.17,0.018).pixelate(80,35))
+            .diff(noise(45,.65).pixelate(90,24).thresh(.7))
+            .modulate(noise(120,.8),.06)
+            .pixelate(240,75)
+            .contrast(2.6)
+            .brightness(-0.1)
+            .saturate(0)
+            .out();
+
+          requestAnimationFrame(() => {
+            canvas.style.transition = "opacity 400ms ease";
+            canvas.style.opacity = "1";
+          });
+
+          window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            canvas.style.width = window.innerWidth + "px";
+            canvas.style.height = window.innerHeight + "px";
+            try {
+              if(window._hydra && typeof window._hydra.setResolution === "function"){
+                window._hydra.setResolution(canvas.width, canvas.height);
+              }
+            } catch(e){}
+          });
+        } catch(e){
+          console.error(e);
+        }
+      }
+
+      function boot(){
+        renderImages();
+        if("requestIdleCallback" in window){
+          requestIdleCallback(() => loadHydra(initHydra), { timeout: 500 });
+        } else {
+          setTimeout(() => loadHydra(initHydra), 200);
+        }
+      }
+
+      if(document.readyState === "loading"){
+        window.addEventListener("DOMContentLoaded", boot, { once:true });
+      } else {
+        boot();
+      }
+    })();
+  </script>
+</body>
+</html>
