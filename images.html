@@ -10,12 +10,13 @@
 <style>
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+    grid-template-columns: repeat(auto-fill, 125px);
     gap: 12px;
     max-width: 900px;
   }
-  .thumb { width: 125px; }
+  .thumb { width: 125px; display: block; border: 2px inset #777; background: #000; }
   .thumb img { width: 100%; height: auto; display: block; }
+  .gallery-grid { align-items: start; }
 </style>
 </head>
 
@@ -33,33 +34,33 @@
 
 <div class="gallery">
   <div class="gallery-grid">
-    <a href="IMG_4349.jpeg" target="_blank" class="thumb"><img src="IMG_4349.jpeg" alt="image 01" loading="lazy"></a>
-    <a href="IMG_4419.jpeg" target="_blank" class="thumb"><img src="IMG_4419.jpeg" alt="image 02" loading="lazy"></a>
-    <a href="IMG_4436.jpeg" target="_blank" class="thumb"><img src="IMG_4436.jpeg" alt="image 03" loading="lazy"></a>
-    <a href="IMG_4448.jpeg" target="_blank" class="thumb"><img src="IMG_4448.jpeg" alt="image 04" loading="lazy"></a>
-    <a href="IMG_4458.jpeg" target="_blank" class="thumb"><img src="IMG_4458.jpeg" alt="image 05" loading="lazy"></a>
-    <a href="IMG_4490.jpeg" target="_blank" class="thumb"><img src="IMG_4490.jpeg" alt="image 06" loading="lazy"></a>
-    <a href="IMG_4526.jpeg" target="_blank" class="thumb"><img src="IMG_4526.jpeg" alt="image 07" loading="lazy"></a>
-    <a href="IMG_4537.jpeg" target="_blank" class="thumb"><img src="IMG_4537.jpeg" alt="image 08" loading="lazy"></a>
-    <a href="IMG_4547.jpeg" target="_blank" class="thumb"><img src="IMG_4547.jpeg" alt="image 09" loading="lazy"></a>
-    <a href="IMG_4745.jpeg" target="_blank" class="thumb"><img src="IMG_4745.jpeg" alt="image 10" loading="lazy"></a>
-    <a href="IMG_4749.jpeg" target="_blank" class="thumb"><img src="IMG_4749.jpeg" alt="image 11" loading="lazy"></a>
-    <a href="IMG_4753.jpeg" target="_blank" class="thumb"><img src="IMG_4753.jpeg" alt="image 12" loading="lazy"></a>
-    <a href="IMG_4764.jpeg" target="_blank" class="thumb"><img src="IMG_4764.jpeg" alt="image 13" loading="lazy"></a>
-    <a href="IMG_4769.jpeg" target="_blank" class="thumb"><img src="IMG_4769.jpeg" alt="image 14" loading="lazy"></a>
-    <a href="IMG_3878.jpeg" target="_blank" class="thumb"><img src="IMG_3878.jpeg" alt="image 15" loading="lazy"></a>
-    <a href="IMG_3945.jpeg" target="_blank" class="thumb"><img src="IMG_3945.jpeg" alt="image 16" loading="lazy"></a>
-    <a href="IMG_3959.jpeg" target="_blank" class="thumb"><img src="IMG_3959.jpeg" alt="image 17" loading="lazy"></a>
-    <a href="IMG_3964.jpeg" target="_blank" class="thumb"><img src="IMG_3964.jpeg" alt="image 18" loading="lazy"></a>
-    <a href="IMG_4343.jpeg" target="_blank" class="thumb"><img src="IMG_4343.jpeg" alt="image 19" loading="lazy"></a>
-    <a href="IMG_5431.jpeg" target="_blank" class="thumb"><img src="IMG_5431.jpeg" alt="image 20" loading="lazy"></a>
-    <a href="IMG_5539.jpeg" target="_blank" class="thumb"><img src="IMG_5539.jpeg" alt="image 21" loading="lazy"></a>
-    <a href="IMG_5625.jpeg" target="_blank" class="thumb"><img src="IMG_5625.jpeg" alt="image 22" loading="lazy"></a>
-    <a href="IMG_5669.jpeg" target="_blank" class="thumb"><img src="IMG_5669.jpeg" alt="image 23" loading="lazy"></a>
-    <a href="IMG_5688.jpeg" target="_blank" class="thumb"><img src="IMG_5688.jpeg" alt="image 24" loading="lazy"></a>
-    <a href="IMG_5811.jpeg" target="_blank" class="thumb"><img src="IMG_5811.jpeg" alt="image 25" loading="lazy"></a>
-    <a href="IMG_5815.jpeg" target="_blank" class="thumb"><img src="IMG_5815.jpeg" alt="image 26" loading="lazy"></a>
-    <a href="IMG_8141.jpeg" target="_blank" class="thumb"><img src="IMG_8141.jpeg" alt="image 27" loading="lazy"></a>
+    <a href="IMG_4349.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4349.jpeg" alt="image 01" loading="lazy"></a>
+    <a href="IMG_4419.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4419.jpeg" alt="image 02" loading="lazy"></a>
+    <a href="IMG_4436.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4436.jpeg" alt="image 03" loading="lazy"></a>
+    <a href="IMG_4448.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4448.jpeg" alt="image 04" loading="lazy"></a>
+    <a href="IMG_4458.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4458.jpeg" alt="image 05" loading="lazy"></a>
+    <a href="IMG_4490.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4490.jpeg" alt="image 06" loading="lazy"></a>
+    <a href="IMG_4526.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4526.jpeg" alt="image 07" loading="lazy"></a>
+    <a href="IMG_4537.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4537.jpeg" alt="image 08" loading="lazy"></a>
+    <a href="IMG_4547.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4547.jpeg" alt="image 09" loading="lazy"></a>
+    <a href="IMG_4745.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4745.jpeg" alt="image 10" loading="lazy"></a>
+    <a href="IMG_4749.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4749.jpeg" alt="image 11" loading="lazy"></a>
+    <a href="IMG_4753.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4753.jpeg" alt="image 12" loading="lazy"></a>
+    <a href="IMG_4764.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4764.jpeg" alt="image 13" loading="lazy"></a>
+    <a href="IMG_4769.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4769.jpeg" alt="image 14" loading="lazy"></a>
+    <a href="IMG_3878.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_3878.jpeg" alt="image 15" loading="lazy"></a>
+    <a href="IMG_3945.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_3945.jpeg" alt="image 16" loading="lazy"></a>
+    <a href="IMG_3959.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_3959.jpeg" alt="image 17" loading="lazy"></a>
+    <a href="IMG_3964.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_3964.jpeg" alt="image 18" loading="lazy"></a>
+    <a href="IMG_4343.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_4343.jpeg" alt="image 19" loading="lazy"></a>
+    <a href="IMG_5431.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_5431.jpeg" alt="image 20" loading="lazy"></a>
+    <a href="IMG_5539.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_5539.jpeg" alt="image 21" loading="lazy"></a>
+    <a href="IMG_5625.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_5625.jpeg" alt="image 22" loading="lazy"></a>
+    <a href="IMG_5669.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_5669.jpeg" alt="image 23" loading="lazy"></a>
+    <a href="IMG_5688.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_5688.jpeg" alt="image 24" loading="lazy"></a>
+    <a href="IMG_5811.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_5811.jpeg" alt="image 25" loading="lazy"></a>
+    <a href="IMG_5815.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_5815.jpeg" alt="image 26" loading="lazy"></a>
+    <a href="IMG_8141.jpeg" target="_blank" class="thumb"><img src="thumbs/IMG_8141.jpeg" alt="image 27" loading="lazy"></a>
   </div>
 </div>
 
