@@ -8,57 +8,49 @@
   <style>
     body {
       min-height: 100vh;
-      background: #000;
       color: #fff;
     }
 
-    .gallery {
+    .content {
       position: relative;
       z-index: 20;
-      margin-top: 120px;
-      margin-left: 180px;
-      margin-right: 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px;
+      margin: 120px 40px 40px 180px;
+      max-width: 720px;
+      font-size: 14px;
+      line-height: 1.7;
     }
 
-    .thumb {
-      display: block;
-      text-decoration: none;
+    .content h1 {
+      font-size: 18px;
+      margin-bottom: 18px;
+      font-weight: normal;
+    }
+
+    .image-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .image-list li {
+      margin-bottom: 8px;
+    }
+
+    .image-list a {
       color: #888;
+      text-decoration: none;
       background: #000;
+      padding: 0 4px;
     }
 
-    .thumb:hover {
+    .image-list a:hover {
       color: #fff;
-    }
-
-    .thumb picture,
-    .thumb img {
-      display: block;
-      width: 100%;
-    }
-
-    .thumb img {
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border: 3px inset #777;
-      background: #111;
-    }
-
-    .caption {
-      display: block;
-      margin-top: 6px;
-      font-size: 12px;
-      line-height: 1.4;
-      word-break: break-word;
+      text-decoration: underline;
     }
 
     @media (max-width: 720px) {
-      .gallery {
-        margin-left: 25px;
-        margin-right: 25px;
+      .content {
+        margin: 120px 25px 25px;
       }
     }
   </style>
@@ -72,44 +64,47 @@
     <a href="text.html">text</a>
   </nav>
 
-  <main class="gallery">
-    <a href="IMG_3878.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_3878.webp" type="image/webp"><img src="thumbs/IMG_3878.jpeg" alt="IMG_3878" loading="lazy"></picture><span class="caption">IMG_3878.jpeg</span></a>
-    <a href="IMG_3945.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_3945.webp" type="image/webp"><img src="thumbs/IMG_3945.jpeg" alt="IMG_3945" loading="lazy"></picture><span class="caption">IMG_3945.jpeg</span></a>
-    <a href="IMG_3959.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_3959.webp" type="image/webp"><img src="thumbs/IMG_3959.jpeg" alt="IMG_3959" loading="lazy"></picture><span class="caption">IMG_3959.jpeg</span></a>
-    <a href="IMG_3964.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_3964.webp" type="image/webp"><img src="thumbs/IMG_3964.jpeg" alt="IMG_3964" loading="lazy"></picture><span class="caption">IMG_3964.jpeg</span></a>
-    <a href="IMG_4343.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4343.webp" type="image/webp"><img src="thumbs/IMG_4343.jpeg" alt="IMG_4343" loading="lazy"></picture><span class="caption">IMG_4343.jpeg</span></a>
-    <a href="IMG_4349.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4349.webp" type="image/webp"><img src="thumbs/IMG_4349.jpeg" alt="IMG_4349" loading="lazy"></picture><span class="caption">IMG_4349.jpeg</span></a>
-    <a href="IMG_4419.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4419.webp" type="image/webp"><img src="thumbs/IMG_4419.jpeg" alt="IMG_4419" loading="lazy"></picture><span class="caption">IMG_4419.jpeg</span></a>
-    <a href="IMG_4436.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4436.webp" type="image/webp"><img src="thumbs/IMG_4436.jpeg" alt="IMG_4436" loading="lazy"></picture><span class="caption">IMG_4436.jpeg</span></a>
-    <a href="IMG_4448.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4448.webp" type="image/webp"><img src="thumbs/IMG_4448.jpeg" alt="IMG_4448" loading="lazy"></picture><span class="caption">IMG_4448.jpeg</span></a>
-    <a href="IMG_4458.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4458.webp" type="image/webp"><img src="thumbs/IMG_4458.jpeg" alt="IMG_4458" loading="lazy"></picture><span class="caption">IMG_4458.jpeg</span></a>
-    <a href="IMG_4490.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4490.webp" type="image/webp"><img src="thumbs/IMG_4490.jpeg" alt="IMG_4490" loading="lazy"></picture><span class="caption">IMG_4490.jpeg</span></a>
-    <a href="IMG_4526.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4526.webp" type="image/webp"><img src="thumbs/IMG_4526.jpeg" alt="IMG_4526" loading="lazy"></picture><span class="caption">IMG_4526.jpeg</span></a>
-    <a href="IMG_4537.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4537.webp" type="image/webp"><img src="thumbs/IMG_4537.jpeg" alt="IMG_4537" loading="lazy"></picture><span class="caption">IMG_4537.jpeg</span></a>
-    <a href="IMG_4547.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4547.webp" type="image/webp"><img src="thumbs/IMG_4547.jpeg" alt="IMG_4547" loading="lazy"></picture><span class="caption">IMG_4547.jpeg</span></a>
-    <a href="IMG_4745.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4745.webp" type="image/webp"><img src="thumbs/IMG_4745.jpeg" alt="IMG_4745" loading="lazy"></picture><span class="caption">IMG_4745.jpeg</span></a>
-    <a href="IMG_4749.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4749.webp" type="image/webp"><img src="thumbs/IMG_4749.jpeg" alt="IMG_4749" loading="lazy"></picture><span class="caption">IMG_4749.jpeg</span></a>
-    <a href="IMG_4753.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4753.webp" type="image/webp"><img src="thumbs/IMG_4753.jpeg" alt="IMG_4753" loading="lazy"></picture><span class="caption">IMG_4753.jpeg</span></a>
-    <a href="IMG_4764.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4764.webp" type="image/webp"><img src="thumbs/IMG_4764.jpeg" alt="IMG_4764" loading="lazy"></picture><span class="caption">IMG_4764.jpeg</span></a>
-    <a href="IMG_4769.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_4769.webp" type="image/webp"><img src="thumbs/IMG_4769.jpeg" alt="IMG_4769" loading="lazy"></picture><span class="caption">IMG_4769.jpeg</span></a>
-    <a href="IMG_5431.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_5431.webp" type="image/webp"><img src="thumbs/IMG_5431.jpeg" alt="IMG_5431" loading="lazy"></picture><span class="caption">IMG_5431.jpeg</span></a>
-    <a href="IMG_5539.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_5539.webp" type="image/webp"><img src="thumbs/IMG_5539.jpeg" alt="IMG_5539" loading="lazy"></picture><span class="caption">IMG_5539.jpeg</span></a>
-    <a href="IMG_5625.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_5625.webp" type="image/webp"><img src="thumbs/IMG_5625.jpeg" alt="IMG_5625" loading="lazy"></picture><span class="caption">IMG_5625.jpeg</span></a>
-    <a href="IMG_5669.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_5669.webp" type="image/webp"><img src="thumbs/IMG_5669.jpeg" alt="IMG_5669" loading="lazy"></picture><span class="caption">IMG_5669.jpeg</span></a>
-    <a href="IMG_5688.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_5688.webp" type="image/webp"><img src="thumbs/IMG_5688.jpeg" alt="IMG_5688" loading="lazy"></picture><span class="caption">IMG_5688.jpeg</span></a>
-    <a href="IMG_5811.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_5811.webp" type="image/webp"><img src="thumbs/IMG_5811.jpeg" alt="IMG_5811" loading="lazy"></picture><span class="caption">IMG_5811.jpeg</span></a>
-    <a href="IMG_5815.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_5815.webp" type="image/webp"><img src="thumbs/IMG_5815.jpeg" alt="IMG_5815" loading="lazy"></picture><span class="caption">IMG_5815.jpeg</span></a>
-    <a href="IMG_8141.jpeg" target="_blank" class="thumb"><picture><source srcset="thumbs/IMG_8141.webp" type="image/webp"><img src="thumbs/IMG_8141.jpeg" alt="IMG_8141" loading="lazy"></picture><span class="caption">IMG_8141.jpeg</span></a>
-    <a href="glitch-performance.png" target="_blank" class="thumb"><picture><source srcset="thumbs/glitch-performance.webp" type="image/webp"><img src="thumbs/glitch-performance.png" alt="glitch-performance" loading="lazy"></picture><span class="caption">glitch-performance.png</span></a>
-    <a href="glitch_figgy_crowpose.jpg" target="_blank" class="thumb"><picture><source srcset="thumbs/glitch_figgy_crowpose.webp" type="image/webp"><img src="thumbs/glitch_figgy_crowpose.jpg" alt="glitch_figgy_crowpose" loading="lazy"></picture><span class="caption">glitch_figgy_crowpose.jpg</span></a>
-    <a href="glitch_site (1).jpg" target="_blank" class="thumb"><picture><source srcset="thumbs/glitch_site (1).webp" type="image/webp"><img src="thumbs/glitch_site (1).jpg" alt="glitch_site (1)" loading="lazy"></picture><span class="caption">glitch_site (1).jpg</span></a>
-    <a href="glitch_site (2).jpg" target="_blank" class="thumb"><picture><source srcset="thumbs/glitch_site (2).webp" type="image/webp"><img src="thumbs/glitch_site (2).jpg" alt="glitch_site (2)" loading="lazy"></picture><span class="caption">glitch_site (2).jpg</span></a>
-    <a href="glitch_site (3).jpg" target="_blank" class="thumb"><picture><source srcset="thumbs/glitch_site (3).webp" type="image/webp"><img src="thumbs/glitch_site (3).jpg" alt="glitch_site (3)" loading="lazy"></picture><span class="caption">glitch_site (3).jpg</span></a>
-    <a href="glitch_site (5).jpg" target="_blank" class="thumb"><picture><source srcset="thumbs/glitch_site (5).webp" type="image/webp"><img src="thumbs/glitch_site (5).jpg" alt="glitch_site (5)" loading="lazy"></picture><span class="caption">glitch_site (5).jpg</span></a>
-    <a href="glitch_site (6).jpg" target="_blank" class="thumb"><picture><source srcset="thumbs/glitch_site (6).webp" type="image/webp"><img src="thumbs/glitch_site (6).jpg" alt="glitch_site (6)" loading="lazy"></picture><span class="caption">glitch_site (6).jpg</span></a>
-    <a href="glitch_site (7).jpg" target="_blank" class="thumb"><picture><source srcset="thumbs/glitch_site (7).webp" type="image/webp"><img src="thumbs/glitch_site (7).jpg" alt="glitch_site (7)" loading="lazy"></picture><span class="caption">glitch_site (7).jpg</span></a>
-    <a href="glitch_site (8).jpg" target="_blank" class="thumb"><picture><source srcset="thumbs/glitch_site (8).webp" type="image/webp"><img src="thumbs/glitch_site (8).jpg" alt="glitch_site (8)" loading="lazy"></picture><span class="caption">glitch_site (8).jpg</span></a>
-    <a href="glitch_site (9).jpg" target="_blank" class="thumb"><picture><source srcset="thumbs/glitch_site (9).webp" type="image/webp"><img src="thumbs/glitch_site (9).jpg" alt="glitch_site (9)" loading="lazy"></picture><span class="caption">glitch_site (9).jpg</span></a>
+  <main class="content">
+    <h1>images</h1>
+    <ul class="image-list">
+      <li><a href="IMG_3878.jpeg" target="_blank">IMG_3878.jpeg</a></li>
+      <li><a href="IMG_3945.jpeg" target="_blank">IMG_3945.jpeg</a></li>
+      <li><a href="IMG_3959.jpeg" target="_blank">IMG_3959.jpeg</a></li>
+      <li><a href="IMG_3964.jpeg" target="_blank">IMG_3964.jpeg</a></li>
+      <li><a href="IMG_4343.jpeg" target="_blank">IMG_4343.jpeg</a></li>
+      <li><a href="IMG_4349.jpeg" target="_blank">IMG_4349.jpeg</a></li>
+      <li><a href="IMG_4419.jpeg" target="_blank">IMG_4419.jpeg</a></li>
+      <li><a href="IMG_4436.jpeg" target="_blank">IMG_4436.jpeg</a></li>
+      <li><a href="IMG_4448.jpeg" target="_blank">IMG_4448.jpeg</a></li>
+      <li><a href="IMG_4458.jpeg" target="_blank">IMG_4458.jpeg</a></li>
+      <li><a href="IMG_4490.jpeg" target="_blank">IMG_4490.jpeg</a></li>
+      <li><a href="IMG_4526.jpeg" target="_blank">IMG_4526.jpeg</a></li>
+      <li><a href="IMG_4537.jpeg" target="_blank">IMG_4537.jpeg</a></li>
+      <li><a href="IMG_4547.jpeg" target="_blank">IMG_4547.jpeg</a></li>
+      <li><a href="IMG_4745.jpeg" target="_blank">IMG_4745.jpeg</a></li>
+      <li><a href="IMG_4749.jpeg" target="_blank">IMG_4749.jpeg</a></li>
+      <li><a href="IMG_4753.jpeg" target="_blank">IMG_4753.jpeg</a></li>
+      <li><a href="IMG_4764.jpeg" target="_blank">IMG_4764.jpeg</a></li>
+      <li><a href="IMG_4769.jpeg" target="_blank">IMG_4769.jpeg</a></li>
+      <li><a href="IMG_5431.jpeg" target="_blank">IMG_5431.jpeg</a></li>
+      <li><a href="IMG_5539.jpeg" target="_blank">IMG_5539.jpeg</a></li>
+      <li><a href="IMG_5625.jpeg" target="_blank">IMG_5625.jpeg</a></li>
+      <li><a href="IMG_5669.jpeg" target="_blank">IMG_5669.jpeg</a></li>
+      <li><a href="IMG_5688.jpeg" target="_blank">IMG_5688.jpeg</a></li>
+      <li><a href="IMG_5811.jpeg" target="_blank">IMG_5811.jpeg</a></li>
+      <li><a href="IMG_5815.jpeg" target="_blank">IMG_5815.jpeg</a></li>
+      <li><a href="IMG_8141.jpeg" target="_blank">IMG_8141.jpeg</a></li>
+      <li><a href="glitch-performance.png" target="_blank">glitch-performance.png</a></li>
+      <li><a href="glitch_figgy_crowpose.jpg" target="_blank">glitch_figgy_crowpose.jpg</a></li>
+      <li><a href="glitch_site (1).jpg" target="_blank">glitch_site (1).jpg</a></li>
+      <li><a href="glitch_site (2).jpg" target="_blank">glitch_site (2).jpg</a></li>
+      <li><a href="glitch_site (3).jpg" target="_blank">glitch_site (3).jpg</a></li>
+      <li><a href="glitch_site (5).jpg" target="_blank">glitch_site (5).jpg</a></li>
+      <li><a href="glitch_site (6).jpg" target="_blank">glitch_site (6).jpg</a></li>
+      <li><a href="glitch_site (7).jpg" target="_blank">glitch_site (7).jpg</a></li>
+      <li><a href="glitch_site (8).jpg" target="_blank">glitch_site (8).jpg</a></li>
+      <li><a href="glitch_site (9).jpg" target="_blank">glitch_site (9).jpg</a></li>
+    </ul>
   </main>
 </body>
 </html>
