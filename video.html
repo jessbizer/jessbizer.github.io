@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>everything is unreal // video</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      min-height: 100vh;
+      color: #fff;
+    }
 
+    .content {
+      position: relative;
+      z-index: 20;
+      margin: 120px 40px 40px 180px;
+      max-width: 720px;
+    }
+
+    .content h1 {
+      font-size: 18px;
+      margin-bottom: 18px;
+      font-weight: normal;
+    }
+
+    .content video {
+      width: 100%;
+      max-height: 70vh;
+      display: block;
+      background: #000;
+      border: 3px inset #777;
+      margin-bottom: 12px;
+    }
+
+    .content a {
+      color: #888;
+      text-decoration: none;
+    }
+
+    .content a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+      .content {
+        margin: 120px 25px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="menu">
+    <a href="index.html">everything is unreal</a><br>
+    <a href="images.html">images</a><br>
+    <a href="video.html">video</a><br>
+    <a href="audio.html">audio</a><br>
+    <a href="text.html">text</a>
+  </nav>
+
+  <main class="content">
+    <h1>video</h1>
+    <video controls preload="metadata">
+      <source src="IMG_4748.mov" type="video/quicktime">
+      Your browser does not support this video.
+    </video>
+    <a href="IMG_4748.mov" download>download IMG_4748.mov</a>
+  </main>
+</body>
+</html>
