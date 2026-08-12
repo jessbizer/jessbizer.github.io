@@ -106,82 +106,11 @@
   
   
 
-  <script>
-    (function () {
-      const images = [
-        { src: "glitch_site (2).jpg", alt: "Glitch image 2" },
-        { src: "glitch_site (3).jpg", alt: "Glitch image 3" },
-        { src: "glitch_site (5).jpg", alt: "Glitch image 5" },
-        { src: "glitch_site (6).jpg", alt: "Glitch image 6" },
-        { src: "IMG_3964.jpeg", alt: "IMG 3964" },
-        { src: "IMG_8141.jpeg", alt: "IMG 8141" }
-      ];
 
-      const positions = [
-        { left: 0, top: 0 },
-        { left: 150, top: 50 },
-        { left: 300, top: 100 },
-        { left: 50, top: 150 },
-        { left: 200, top: 200 },
-        { left: 350, top: 150 },
-        { left: 100, top: 100 },
-        { left: 250, top: 50 },
-        { left: 400, top: 120 }
-      ];
+      
 
-      function shuffleArray(array){
-        const a = [...array];
-        for(let i = a.length - 1; i > 0; i--){
-          const j = Math.floor(Math.random() * (i + 1));
-          [a[i], a[j]] = [a[j], a[i]];
-        }
-        return a;
-      }
+     
 
-      function renderImages(){
-        const container = document.getElementById("windowContainer");
-        if(!container) return;
-        container.innerHTML = "";
-
-        const shuffled = shuffleArray(images);
-
-        shuffled.forEach((image, index) => {
-          const pos = positions[index % positions.length];
-
-          const link = document.createElement("a");
-          link.href = image.src;
-          link.target = "_blank";
-          link.rel = "noopener";
-          link.className = "window-link";
-
-          const win = document.createElement("div");
-          win.className = "window";
-          win.style.left = pos.left + "px";
-          win.style.top = pos.top + "px";
-
-          const img = document.createElement("img");
-          img.src = image.src;
-          img.alt = image.alt;
-
-          win.appendChild(img);
-          link.appendChild(win);
-          container.appendChild(link);
-        });
-      }
-
-      let hydraLoaded = false;
-      let hydraStarted = false;
-
-      function loadHydra(cb){
-        if(hydraLoaded) return;
-        hydraLoaded = true;
-
-        const s = document.createElement("script");
-        s.src = "https://unpkg.com/hydra-synth";
-        s.onload = () => { try { cb(); } catch(e){ console.error(e); } };
-        s.onerror = () => { console.warn("Failed to load hydra-synth"); };
-        document.head.appendChild(s);
-      }
 
       function initHydra(){
         if(hydraStarted) return;
