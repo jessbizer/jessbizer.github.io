@@ -1,263 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>everything is unreal, it's just a glitch</title>
-  <link rel="preconnect" href="https://unpkg.com" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>everything is unreal // images</title>
+
+<link rel="stylesheet" href="style.css">
 <style>
-  #images-list img {
-    display: block;
-    margin-bottom: 20px;
-    max-width: 100%;
-    height: auto;
-  }
-
-    * { margin:0; padding:0; box-sizing:border-box; }
-
-    html, body {
-      width:100%;
-      height:100%;
-      background:#000;
-      overflow:hidden;
-      font-family:"Courier New", monospace;
-    }
-
-    .menu{
-      position:fixed;
-      top:25px;
-      left:25px;
-      z-index:50;
-      font-size:16px;
-      line-height:1.8;
-    }
-
-    .menu a{
-      display:inline-block;
-      text-decoration:none;
-      background:black;
-      color:#fff;              /* fixed */
-      padding:0 5px;
-      margin-bottom:6px;
-    }
-
-    .menu a:visited { color:#fff; }
-    .menu a:hover { text-decoration:line-through; }
-
-    #hydra-canvas{
-      position:fixed;
-      inset:0;
-      width:100vw;
-      height:100vh;
-      z-index:0;
-      display:block;
-      opacity:0;
-      background:linear-gradient(180deg,#000 0%, #080808 100%);
-    }
-
-  </style>
+  .thumb img { max-width: 125px; height: auto; display: block; }
+  table { border-collapse: collapse; }
+  td { padding: 8px; }
+  .thumb { width:125px; }
+</style>
 </head>
+
 <body>
-  <canvas id="hydra-canvas"></canvas>
 
-  <nav class="menu">
-    <a href="index.html">everything is unreal</a><br>
-    <a href="images.html">images</a><br>
-    <a href="video.html">video</a><br>
-    <a href="audio.html">audio</a><br>
-    <a href="text.html">text</a>
-  </nav>
+<canvas id="hydra-canvas"></canvas>
 
- 
-  <div>
-  <img src="IMG_3878.jpeg" alt="">
-    <img src="IMG_3945.jpeg" alt="">
-    <img src="IMG_3959.jpeg" alt="">
-  <img src="IMG_3964.jpeg" alt="">
-  <img src="IMG_4343.jpeg" alt="">
-  <img src="IMG_4349.jpeg" alt="">
-  <img src="IMG_4419.jpeg" alt="">
-  <img src="IMG_4436.jpeg" alt="">
-  <img src="IMG_4448.jpeg" alt="">
-  <img src="IMG_4458.jpeg" alt="">
-  <img src="IMG_4490.jpeg" alt="">
-  <img src="IMG_4526.jpeg" alt="">
-  <img src="IMG_4537.jpeg" alt="">
-  <img src="IMG_4547.jpeg" alt="">
-  <img src="IMG_4745.jpeg" alt="">
-  <img src="IMG_4749.jpeg" alt="">
-  <img src="IMG_4753.jpeg" alt="">
-  <img src="IMG_4764.jpeg" alt="">
-  <img src="IMG_4769.jpeg" alt="">
-  <img src="IMG_5431.jpeg" alt="">
-  <img src="IMG_5539.jpeg" alt="">
-  <img src="IMG_5625.jpeg" alt="">
-  <img src="IMG_5669.jpeg" alt="">
-  <img src="IMG_5688.jpeg" alt="">
-  <img src="IMG_5811.jpeg" alt="">
-  <img src="IMG_5815.jpeg" alt="">
-  <img src="IMG_8141.jpeg" alt="">
+<nav class="menu">
+  <a href="index.html">everything is unreal</a><br>
+  <a href="images.html">images</a><br>
+  <a href="video.html">video</a><br>
+  <a href="audio.html">audio</a><br>
+  <a href="text.html">text</a>
+</nav>
+
+<div class="gallery">
+
+<table>
+<tr>
+<td><a href="IMG_4349.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4349.webp"><img src="thumbs/IMG_4349.jpeg" alt="image 01" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4419.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4419.webp"><img src="thumbs/IMG_4419.jpeg" alt="image 02" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4436.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4436.webp"><img src="thumbs/IMG_4436.jpeg" alt="image 03" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4448.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4448.webp"><img src="thumbs/IMG_4448.jpeg" alt="image 04" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4458.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4458.webp"><img src="thumbs/IMG_4458.jpeg" alt="image 05" loading="lazy" width="125"></picture></div></a></td>
+</tr>
+
+<tr>
+<td><a href="IMG_4490.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4490.webp"><img src="thumbs/IMG_4490.jpeg" alt="image 06" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4526.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4526.webp"><img src="thumbs/IMG_4526.jpeg" alt="image 07" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4537.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4537.webp"><img src="thumbs/IMG_4537.jpeg" alt="image 08" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4547.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4547.webp"><img src="thumbs/IMG_4547.jpeg" alt="image 09" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4745.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4745.webp"><img src="thumbs/IMG_4745.jpeg" alt="image 10" loading="lazy" width="125"></picture></div></a></td>
+</tr>
+
+<tr>
+<td><a href="IMG_4749.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4749.webp"><img src="thumbs/IMG_4749.jpeg" alt="image 11" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4753.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4753.webp"><img src="thumbs/IMG_4753.jpeg" alt="image 12" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4764.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4764.webp"><img src="thumbs/IMG_4764.jpeg" alt="image 13" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_4769.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4769.webp"><img src="thumbs/IMG_4769.jpeg" alt="image 14" loading="lazy" width="125"></picture></div></a></td>
+<td></td>
+</tr>
+
+<!-- Newly added images (uploaded today) -->
+<tr>
+<td><a href="Bazaart_276E581C-1F57-4C8C-BF48-1F9A034455C6.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/Bazaart_276E581C-1F57-4C8C-BF48-1F9A034455C6.webp"><img src="thumbs/Bazaart_276E581C-1F57-4C8C-BF48-1F9A034455C6.jpeg" alt="image 15" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_3878.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_3878.webp"><img src="thumbs/IMG_3878.jpeg" alt="image 16" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_3945.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_3945.webp"><img src="thumbs/IMG_3945.jpeg" alt="image 17" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_3959.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_3959.webp"><img src="thumbs/IMG_3959.jpeg" alt="image 18" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_3964.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_3964.webp"><img src="thumbs/IMG_3964.jpeg" alt="image 19" loading="lazy" width="125"></picture></div></a></td>
+</tr>
+
+<tr>
+<td><a href="IMG_4343.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_4343.webp"><img src="thumbs/IMG_4343.jpeg" alt="image 20" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_5431.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_5431.webp"><img src="thumbs/IMG_5431.jpeg" alt="image 21" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_5539.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_5539.webp"><img src="thumbs/IMG_5539.jpeg" alt="image 22" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_5625.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_5625.webp"><img src="thumbs/IMG_5625.jpeg" alt="image 23" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_5669.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_5669.webp"><img src="thumbs/IMG_5669.jpeg" alt="image 24" loading="lazy" width="125"></picture></div></a></td>
+</tr>
+
+<tr>
+<td><a href="IMG_5688.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_5688.webp"><img src="thumbs/IMG_5688.jpeg" alt="image 25" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_5811.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_5811.webp"><img src="thumbs/IMG_5811.jpeg" alt="image 26" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_5815.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_5815.webp"><img src="thumbs/IMG_5815.jpeg" alt="image 27" loading="lazy" width="125"></picture></div></a></td>
+<td><a href="IMG_8141.jpeg" target="_blank"><div class="thumb"><picture><source type="image/webp" srcset="thumbs/IMG_8141.webp"><img src="thumbs/IMG_8141.jpeg" alt="image 28" loading="lazy" width="125"></picture></div></a></td>
+<td></td>
+</tr>
+</table>
+
 </div>
 
+<script src="https://unpkg.com/hydra-synth"></script>
 
+<script>
+const hydra = new Hydra({
+  canvas: document.getElementById("hydra-canvas"),
+  detectAudio: false
+});
 
+// Glitchy, geometric scan-like warped background
+osc(80, 0)
+  .kaleid(7)
+  .rotate(() => time * 0.11)
+  .scale(1.8, 0.4)
+  .scrollX(() => 0.2 + 0.15 * Math.sin(time * 0.13))
+  .scrollY(() => -0.12 + 0.1 * Math.cos(time * 0.17))
+  .pixelate(180, 60)
+  .modulate(
+    osc(120, 0)
+      .rotate(() => -time * 0.08)
+      .pixelate(40, 80)
+      .scrollX(() => 0.1 * Math.sin(time * 0.19)),
+    () => 0.35 + 0.2 * Math.sin(time * 0.09)
+  )
+  .modulateRotate(
+    noise(8, 0.3)
+      .pixelate(100, 20)
+      .scrollY(() => time * 0.05),
+    0.5
+  )
+  .pixelate(220, 90)
+  .contrast(2.2)
+  .saturate(0.8)
+  .brightness(-0.15)
+  .out();
+</script>
 
-
-  <script>
-    (function () {
-      const images = [
-        { src: "glitch_site (2).jpg", alt: "Glitch image 2" },
-        { src: "glitch_site (3).jpg", alt: "Glitch image 3" },
-        { src: "glitch_site (5).jpg", alt: "Glitch image 5" },
-        { src: "glitch_site (6).jpg", alt: "Glitch image 6" },
-        { src: "IMG_3964.jpeg", alt: "IMG 3964" },
-        { src: "IMG_8141.jpeg", alt: "IMG 8141" }
-      ];
-
-      const positions = [
-        { left: 0, top: 0 },
-        { left: 150, top: 50 },
-        { left: 300, top: 100 },
-        { left: 50, top: 150 },
-        { left: 200, top: 200 },
-        { left: 350, top: 150 },
-        { left: 100, top: 100 },
-        { left: 250, top: 50 },
-        { left: 400, top: 120 }
-      ];
-
-      function shuffleArray(array){
-        const a = [...array];
-        for(let i = a.length - 1; i > 0; i--){
-          const j = Math.floor(Math.random() * (i + 1));
-          [a[i], a[j]] = [a[j], a[i]];
-        }
-        return a;
-      }
-
-      function renderImages(){
-        const container = document.getElementById("windowContainer");
-        if(!container) return;
-        container.innerHTML = "";
-
-        const shuffled = shuffleArray(images);
-
-        shuffled.forEach((image, index) => {
-          const pos = positions[index % positions.length];
-
-          const link = document.createElement("a");
-          link.href = image.src;
-          link.target = "_blank";
-          link.rel = "noopener";
-          link.className = "window-link";
-
-          const win = document.createElement("div");
-          win.className = "window";
-          win.style.left = pos.left + "px";
-          win.style.top = pos.top + "px";
-
-          const img = document.createElement("img");
-          img.src = image.src;
-          img.alt = image.alt;
-
-          win.appendChild(img);
-          link.appendChild(win);
-          container.appendChild(link);
-        });
-      }
-
-      let hydraLoaded = false;
-      let hydraStarted = false;
-
-      function loadHydra(cb){
-        if(hydraLoaded) return;
-        hydraLoaded = true;
-
-        const s = document.createElement("script");
-        s.src = "https://unpkg.com/hydra-synth";
-        s.onload = () => { try { cb(); } catch(e){ console.error(e); } };
-        s.onerror = () => { console.warn("Failed to load hydra-synth"); };
-        document.head.appendChild(s);
-      }
-
-      function initHydra(){
-        if(hydraStarted) return;
-        hydraStarted = true;
-
-        try{
-          const canvas = document.getElementById("hydra-canvas");
-          if(!canvas) return;
-
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-          canvas.style.width = window.innerWidth + "px";
-          canvas.style.height = window.innerHeight + "px";
-
-          const hydra = new Hydra({ canvas, detectAudio:false });
-          window._hydra = hydra;
-          window.speed = 0.18;
-
-          const pattern = () =>
-            osc(180,0)
-              .kaleid(4)
-              .rotate(0.18)
-              .scale(1.6,0.32)
-              .scrollX(0.12)
-              .scrollY(-0.08)
-              .pixelate(120,35)
-              .modulate(noise(5,0.25),0.18);
-
-          pattern()
-            .scrollX(() => 0.18 + 0.08*Math.sin(time*0.27),0.018)
-            .scrollY(() => -0.08 + 0.06*Math.cos(time*0.19),0.014)
-            .rotate(() => 0.18*Math.sin(time*0.11))
-            .modulateRotate(noise(5,0.2),0.35)
-            .modulateScale(osc(10,0).rotate(1.57).pixelate(12,90),0.45)
-            .mult(pattern().rotate(0.55).scrollX(0.33,-0.02).scrollY(-0.17,0.018).pixelate(80,35))
-            .diff(noise(45,.65).pixelate(90,24).thresh(.7))
-            .modulate(noise(120,.8),.06)
-            .pixelate(240,75)
-            .contrast(2.6)
-            .brightness(-0.1)
-            .saturate(0)
-            .out();
-
-          requestAnimationFrame(() => {
-            canvas.style.transition = "opacity 400ms ease";
-            canvas.style.opacity = "1";
-          });
-
-          window.addEventListener("resize", () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            canvas.style.width = window.innerWidth + "px";
-            canvas.style.height = window.innerHeight + "px";
-            try {
-              if(window._hydra && typeof window._hydra.setResolution === "function"){
-                window._hydra.setResolution(canvas.width, canvas.height);
-              }
-            } catch(e){}
-          });
-        } catch(e){
-          console.error(e);
-        }
-      }
-
-      function boot(){
-        renderImages();
-        if("requestIdleCallback" in window){
-          requestIdleCallback(() => loadHydra(initHydra), { timeout: 500 });
-        } else {
-          setTimeout(() => loadHydra(initHydra), 200);
-        }
-      }
-
-      if(document.readyState === "loading"){
-        window.addEventListener("DOMContentLoaded", boot, { once:true });
-      } else {
-        boot();
-      }
-    })();
-  </script>
 </body>
 </html>
