@@ -123,35 +123,12 @@ base
 async function loadImages() {
   const imagesList = document.getElementById('images-list');
   
-  // Array of all images with thumbnails
+  // Array of images - update this with your actual image paths
   const images = [
-    { thumb: 'thumbs/IMG_3878.jpeg', full: 'IMG_3878.jpeg' },
-    { thumb: 'thumbs/IMG_3945.jpeg', full: 'IMG_3945.jpeg' },
-    { thumb: 'thumbs/IMG_3959.jpeg', full: 'IMG_3959.jpeg' },
-    { thumb: 'thumbs/IMG_3964.jpeg', full: 'IMG_3964.jpeg' },
-    { thumb: 'thumbs/IMG_4343.jpeg', full: 'IMG_4343.jpeg' },
-    { thumb: 'thumbs/IMG_4349.jpeg', full: 'IMG_4349.jpeg' },
-    { thumb: 'thumbs/IMG_4419.jpeg', full: 'IMG_4419.jpeg' },
-    { thumb: 'thumbs/IMG_4436.jpeg', full: 'IMG_4436.jpeg' },
-    { thumb: 'thumbs/IMG_4448.jpeg', full: 'IMG_4448.jpeg' },
-    { thumb: 'thumbs/IMG_4458.jpeg', full: 'IMG_4458.jpeg' },
-    { thumb: 'thumbs/IMG_4490.jpeg', full: 'IMG_4490.jpeg' },
-    { thumb: 'thumbs/IMG_4526.jpeg', full: 'IMG_4526.jpeg' },
-    { thumb: 'thumbs/IMG_4537.jpeg', full: 'IMG_4537.jpeg' },
-    { thumb: 'thumbs/IMG_4547.jpeg', full: 'IMG_4547.jpeg' },
-    { thumb: 'thumbs/IMG_4745.jpeg', full: 'IMG_4745.jpeg' },
-    { thumb: 'thumbs/IMG_4749.jpeg', full: 'IMG_4749.jpeg' },
-    { thumb: 'thumbs/IMG_4753.jpeg', full: 'IMG_4753.jpeg' },
-    { thumb: 'thumbs/IMG_4764.jpeg', full: 'IMG_4764.jpeg' },
-    { thumb: 'thumbs/IMG_4769.jpeg', full: 'IMG_4769.jpeg' },
-    { thumb: 'thumbs/IMG_5431.jpeg', full: 'IMG_5431.jpeg' },
-    { thumb: 'thumbs/IMG_5539.jpeg', full: 'IMG_5539.jpeg' },
-    { thumb: 'thumbs/IMG_5625.jpeg', full: 'IMG_5625.jpeg' },
-    { thumb: 'thumbs/IMG_5669.jpeg', full: 'IMG_5669.jpeg' },
-    { thumb: 'thumbs/IMG_5688.jpeg', full: 'IMG_5688.jpeg' },
-    { thumb: 'thumbs/IMG_5811.jpeg', full: 'IMG_5811.jpeg' },
-    { thumb: 'thumbs/IMG_5815.jpeg', full: 'IMG_5815.jpeg' },
-    { thumb: 'thumbs/IMG_8141.jpeg', full: 'IMG_8141.jpeg' },
+    // Format: { thumb: 'path/to/thumbnail', full: 'path/to/fullsize' }
+    // Example:
+    // { thumb: 'images/thumb1.jpg', full: 'images/full1.jpg' },
+    // { thumb: 'images/thumb2.jpg', full: 'images/full2.jpg' },
   ];
   
   images.forEach(img => {
