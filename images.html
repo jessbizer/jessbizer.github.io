@@ -4,40 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>everything is unreal // images</title>
+<title>everything is unreal // audio</title>
 
 <link rel="stylesheet" href="style.css">
 <style>
   html, body { height: 100%; margin: 0; }
   #hydra-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; }
-  
-  .image-list {
-    position: relative;
-    z-index: 1;
-    padding: 20px;
-    max-width: 800px;
-  }
-  
-  .image-list img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 15px 0;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-  }
-  
-  .image-list img:hover {
-    opacity: 0.8;
-  }
-  
-  .image-item {
-    margin-bottom: 20px;
-  }
-  
-  .image-item a {
-    text-decoration: none;
-  }
+ 
 </style>
 </head>
 
@@ -53,7 +26,7 @@
   <a href="text.html">text</a>
 </nav>
 
-<div class="image-list" id="images-list">
+<div class="image-list">
  
 </div>
 
@@ -118,39 +91,6 @@ base
   .contrast(2.2)
   .saturate(1.15)
   .out();
-
-// Load images into the list
-async function loadImages() {
-  const imagesList = document.getElementById('images-list');
-  
-  // Array of images - update this with your actual image paths
-  const images = [
-    // Format: { thumb: 'path/to/thumbnail', full: 'path/to/fullsize' }
-    // Example:
-    // { thumb: 'images/thumb1.jpg', full: 'images/full1.jpg' },
-    // { thumb: 'images/thumb2.jpg', full: 'images/full2.jpg' },
-  ];
-  
-  images.forEach(img => {
-    const container = document.createElement('div');
-    container.className = 'image-item';
-    
-    const link = document.createElement('a');
-    link.href = img.full;
-    link.target = '_blank';
-    
-    const image = document.createElement('img');
-    image.src = img.thumb;
-    image.alt = 'Gallery image';
-    
-    link.appendChild(image);
-    container.appendChild(link);
-    imagesList.appendChild(container);
-  });
-}
-
-// Call the function when the page loads
-document.addEventListener('DOMContentLoaded', loadImages);
 </script>
 
 </body>
