@@ -48,16 +48,6 @@ html, body{
   margin-bottom:6px;
 }
 
-.quality-select{
-  display:inline-block;
-  margin-left:8px;
-  padding:2px 6px;
-  background:#111;
-  color:#fff;
-  border:1px solid #333;
-  font-size:13px;
-}
-
 /* HYDRA BACKGROUND */
 
 #hydra-canvas{
@@ -126,11 +116,6 @@ html, body{
   <a href="video.html">video</a><br>
   <a href="audio.html">audio</a><br>
   <a href="text.html">text</a>
-  <select id="quality-select" class="quality-select" aria-label="Visual quality">
-    <option value="high">High</option>
-    <option value="medium">Medium</option>
-    <option value="low">Low</option>
-  </select>
 </nav>
 
 <div class="stack">
@@ -200,15 +185,6 @@ html, body{
     link.appendChild(div);
     container.appendChild(link);
   });
-
-  // Quality select handler
-  var qualitySelect = document.getElementById('quality-select');
-  if(qualitySelect){
-    qualitySelect.addEventListener('change', function(){
-      var quality = qualitySelect.value;
-      try{ localStorage.setItem('hydraQuality', quality); }catch(e){}
-    }, {passive:true});
-  }
 })();
 </script>
 
