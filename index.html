@@ -164,75 +164,34 @@ const hydra = new Hydra({
   detectAudio:false
 });
 
-speed = 0.18;
-
-pattern = () =>
-  osc(180,0)
-    .kaleid(5)
-    .rotate(0.18)
-    .scale(1.45,0.38)
-    .scrollX(0.12)
-    .scrollY(-0.08)
-    .modulate(noise(3,0.25),0.12);
-
-pattern()
-  .scrollX(() => 0.18 + 0.04*Math.sin(time*0.27),0.015)
-  .scrollY(() => -0.08 + 0.03*Math.cos(time*0.19),0.011)
-
-  .modulate(
-    osc(8, 0.03, 1).kaleid(2).rotate(() => 0.1*Math.sin(time*0.2)),
-    () => 0.25 + 0.15*Math.sin(time*0.12)
+// o0: The desaturated feedback loop that catches color flashes
+src(o0)
+  .saturate(0) // Forces the feedback trail into black and white
+  .scale(0.995) 
+  .modulate(noise(2, 0.1).brightness(-0.5), 0.003) // Subtle edge warping
+  .layer(
+    src(o1)
+      .mask(src(o1).luma(0.6, 0.1)) // Only layers the brightest parts of o1
   )
+  .out(o0)
 
-  .blend(
-    src(o0)
-      .pixelate(
-        () => 80 + 220 * (0.5 + 0.5*Math.sin(time*0.08)),
-        () => 40 + 120 * (0.5 + 0.5*Math.sin(time*0.08))
-      )
-      .thresh(() => 0.45 + 0.25*(0.5 + 0.5*Math.sin(time*0.08))),
-    () => 0.35 + 0.35*(0.5 + 0.5*Math.sin(time*0.08))
+// o1: The generator creating high-contrast B&W structures and sudden color flashes
+noise(3, 0.4)
+  .contrast(2)
+  .scrollX(0.1, 0.05)
+  .color(-1, 1, 2) // Inverts and shifts channels to create intense, volatile colors
+  .brightness(-0.2)
+  .mult(osc(10, 0.3).thresh(0.5)) // Chops the colors into fast-blinking strobes
+  .layer(
+    gradient(0.5)
+      .hue(time * 0.1)
+      .saturate(2)
+      .mult(noise(5, 0.8).thresh(0.7)) // Random bursts of saturated color
   )
+  .out(o1)
 
-  .rotate(() => 0.12*Math.sin(time*0.11))
-  .modulateRotate(noise(5,0.2),0.25)
-  .modulateScale(noise(2,0.35),0.35)
-  .mult(
-    pattern()
-      .rotate(0.55)
-      .scrollX(0.33,-0.02)
-      .scrollY(-0.17,0.018)
-      .pixelate(140,60)
-  )
-  .diff(
-    noise(40,.55)
-      .pixelate(80,30)
-      .thresh(.72)
-  )
-  .modulate(noise(150,.8),.05)
-  .pixelate(280,90)
-  .contrast(2.3)
-  .brightness(-0.08)
-  .saturate(0)
-  .out();
+render(o0)
 
-const stacks = Array.from(document.querySelectorAll('.image-stack'));
-
-function reshuffleImages() {
-  const spreadX = window.innerWidth * 0.35;
-  const spreadY = window.innerHeight * 0.30;
-
-  stacks.forEach((el) => {
-    const x = (Math.random() * 2 - 1) * spreadX;
-    const y = (Math.random() * 2 - 1) * spreadY;
-    const r = (Math.random() * 36 - 18).toFixed(2);
-    el.style.marginLeft = `${x.toFixed(1)}px`;
-    el.style.marginTop = `${y.toFixed(1)}px`;
-    el.style.transform = `translate(-50%,-50%) rotate(${r}deg)`;
-  });
-}
-
-document.addEventListener('click', reshuffleImages);
 </script>
 
 </body>
