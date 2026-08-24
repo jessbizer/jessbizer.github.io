@@ -199,6 +199,24 @@ pattern()
   .brightness(-0.08)
   .saturate(0)
   .out();
+
+const stacks = Array.from(document.querySelectorAll('.image-stack'));
+
+function reshuffleImages() {
+  const spreadX = window.innerWidth * 0.35;
+  const spreadY = window.innerHeight * 0.30;
+
+  stacks.forEach((el) => {
+    const x = (Math.random() * 2 - 1) * spreadX;
+    const y = (Math.random() * 2 - 1) * spreadY;
+    const r = (Math.random() * 36 - 18).toFixed(2);
+    el.style.marginLeft = `${x.toFixed(1)}px`;
+    el.style.marginTop = `${y.toFixed(1)}px`;
+    el.style.transform = `translate(-50%,-50%) rotate(${r}deg)`;
+  });
+}
+
+document.addEventListener('click', reshuffleImages);
 </script>
 
 </body>
