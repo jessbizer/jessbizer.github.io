@@ -69,6 +69,27 @@ html, body{
   padding-left:180px;
 }
 
+/* HAPHAZARD IMAGE STACK */
+.image-stack {
+  position:absolute;
+  z-index:10;
+}
+
+.image-stack img {
+  display:block;
+  width:280px;
+  height:auto;
+  border:2px solid #666;
+  background:#000;
+}
+
+/* Individual image positions */
+.img-1 { top:100px; left:200px; transform:rotate(-8deg); }
+.img-2 { top:280px; left:550px; transform:rotate(12deg); }
+.img-3 { top:50px; left:900px; transform:rotate(-5deg); }
+.img-4 { top:350px; left:300px; transform:rotate(15deg); }
+.img-5 { top:200px; left:1200px; transform:rotate(-10deg); }
+
 /* TABLE */
 table{
   border-collapse:collapse;
@@ -112,9 +133,21 @@ img{
 </nav>
 
 <div class="index_gallery">
-
-
-
+  <div class="image-stack img-1">
+    <img src="IMG_4349.jpeg" alt="">
+  </div>
+  <div class="image-stack img-2">
+    <img src="IMG_4419.jpeg" alt="">
+  </div>
+  <div class="image-stack img-3">
+    <img src="IMG_4436.jpeg" alt="">
+  </div>
+  <div class="image-stack img-4">
+    <img src="IMG_4448.jpeg" alt="">
+  </div>
+  <div class="image-stack img-5">
+    <img src="IMG_4458.jpeg" alt="">
+  </div>
 </div>
 
 <script src="https://unpkg.com/hydra-synth"></script>
