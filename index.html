@@ -178,6 +178,22 @@ pattern = () =>
 pattern()
   .scrollX(() => 0.18 + 0.04*Math.sin(time*0.27),0.015)
   .scrollY(() => -0.08 + 0.03*Math.cos(time*0.19),0.011)
+
+  .modulate(
+    osc(8, 0.03, 1).kaleid(2).rotate(() => 0.1*Math.sin(time*0.2)),
+    () => 0.25 + 0.15*Math.sin(time*0.12)
+  )
+
+  .blend(
+    src(o0)
+      .pixelate(
+        () => 80 + 220 * (0.5 + 0.5*Math.sin(time*0.08)),
+        () => 40 + 120 * (0.5 + 0.5*Math.sin(time*0.08))
+      )
+      .thresh(() => 0.45 + 0.25*(0.5 + 0.5*Math.sin(time*0.08))),
+    () => 0.35 + 0.35*(0.5 + 0.5*Math.sin(time*0.08))
+  )
+
   .rotate(() => 0.12*Math.sin(time*0.11))
   .modulateRotate(noise(5,0.2),0.25)
   .modulateScale(noise(2,0.35),0.35)
