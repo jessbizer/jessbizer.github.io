@@ -1,296 +1,158 @@
-<link rel="preconnect" href="https://unpkg.com" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>everything is unreal // images</title>
 
 <style>
-  
-  .images-list img {
-    display: block;
-    margin-bottom: 20px;
-    max-width: 50%;
-    height: auto;
-  }
-    html, body {
-      width: 100%;
-      height: 100%;
-      background: #000;
-      overflow: hidden;
-      font-family: "Courier New", monospace;
-      margin: 0;
-      padding: 0;
-    }
-
-    .menu {
-      position: fixed;
-      top: 25px;
-      left: 25px;
-      z-index: 50;
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    html, body {
-      width:100%;
-      height:100%;
-      background:#000;
-      overflow:hidden;
-      font-family:"Courier New", monospace;
-    .menu a {
-      display: inline-block;
-      text-decoration: none;
-      background: black;
-      color: #fff;
-      padding: 0 5px;
-      margin-bottom: 6px;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-    .menu{
-      position:fixed;
-      top:25px;
-      left:25px;
-      z-index:50;
-      font-size:16px;
-      line-height:1.8;
-    .menu a:visited { color: #fff; }
-    .menu a:hover { text-decoration: line-through; }
-
-    #hydra-canvas {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      display: block;
-      opacity: 0;
-      background: linear-gradient(180deg, #000 0%, #080808 100%);
+html, body{
+  width:100%;
+  height:100%;
+  background:#000;
+  overflow:hidden;
+  font-family:"Courier New", monospace;
 }
 
-    .menu a{
-      display:inline-block;
-      text-decoration:none;
-      background:black;
-      color:#fff;              /* fixed */
-      padding:0 5px;
-      margin-bottom:6px;
-    #windowContainer {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
+/* MENU */
+.menu{
+  position:fixed;
+  top:25px;
+  left:25px;
+  z-index:50;
+  font-size:16px;
+  line-height:1.8;
 }
 
-    .menu a:visited { color:#fff; }
-    .menu a:hover { text-decoration:line-through; }
-
-    #hydra-canvas{
-      position:fixed;
-      inset:0;
-      width:100vw;
-      height:100vh;
-      z-index:0;
-      display:block;
-      opacity:0;
-      background:linear-gradient(180deg,#000 0%, #080808 100%);
-    .window-link {
-      position: absolute;
-      text-decoration: none;
-      display: block;
+.menu a{
+  display:inline-block;
+  color:white;
+  text-decoration:none;
+  background:black;
+  padding:0 5px;
+  margin-bottom:6px;
 }
 
-  
-    .window {
-      position: relative;
-      background: #000;
-      border: 1px solid #fff;
-      padding: 5px;
-    }
+/* HYDRA BACKGROUND */
+#hydra-canvas{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  z-index:0;
+  display:block;
+}
 
-    
-    .window img {
-      display: block;
-      max-width: 200px;
-      height: auto;
-      cursor: pointer;
-    }
+/* TABLE AREA */
+.gallery{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  z-index:10;
+  padding-top:120px;
+  padding-left:180px;
+}
 
-    .window img:hover {
-      opacity: 0.8;
-    }
+/* TABLE */
+table{
+  border-collapse:collapse;
+  background:#000;
+  border:2px inset #888;
+}
+
+td{
+  width:120px;
+  height:90px;
+  border:1px inset #666;
+  text-align:center;
+  vertical-align:middle;
+  background:#000;
+}
+
+.thumb{
+  color:#888;
+  font-size:12px;
+}
+
+img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 </style>
 </head>
+
 <body>
-@@ -72,13 +92,7 @@
-<a href="text.html">text</a>
+
+<canvas id="hydra-canvas"></canvas>
+
+<nav class="menu">
+  <a href="index.html">everything is unreal</a><br>
+  <a href="images.html">images</a><br>
+  <a href="video.html">video</a><br>
+  <a href="audio.html">audio</a><br>
+  <a href="text.html">text</a>
 </nav>
 
-  
-  <div id="images-list">
- 
+<div class="gallery">
+
+<table>
+
+</table>
+
 </div>
 
-  
-  
-  <div id="windowContainer"></div>
+<script src="https://unpkg.com/hydra-synth"></script>
 
 <script>
-(function () {
-@@ -103,18 +117,18 @@
-{ left: 400, top: 120 }
-];
+const hydra = new Hydra({
+  canvas: document.getElementById("hydra-canvas"),
+  detectAudio:false
+});
 
-      function shuffleArray(array){
-      function shuffleArray(array) {
-const a = [...array];
-        for(let i = a.length - 1; i > 0; i--){
-        for (let i = a.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[a[i], a[j]] = [a[j], a[i]];
-}
-return a;
-}
+speed = 0.18;
 
-      function renderImages(){
-      function renderImages() {
-const container = document.getElementById("windowContainer");
-        if(!container) return;
-        if (!container) return;
-container.innerHTML = "";
-
-const shuffled = shuffleArray(images);
-@@ -127,11 +141,11 @@
-link.target = "_blank";
-link.rel = "noopener";
-link.className = "window-link";
-          link.style.left = pos.left + "px";
-          link.style.top = pos.top + "px";
-
-const win = document.createElement("div");
-win.className = "window";
-          win.style.left = pos.left + "px";
-          win.style.top = pos.top + "px";
-
-const img = document.createElement("img");
-img.src = image.src;
-@@ -146,54 +160,54 @@
-let hydraLoaded = false;
-let hydraStarted = false;
-
-      function loadHydra(cb){
-        if(hydraLoaded) return;
-      function loadHydra(cb) {
-        if (hydraLoaded) return;
-hydraLoaded = true;
-
-const s = document.createElement("script");
-s.src = "https://unpkg.com/hydra-synth";
-        s.onload = () => { try { cb(); } catch(e){ console.error(e); } };
-        s.onload = () => { try { cb(); } catch (e) { console.error(e); } };
-s.onerror = () => { console.warn("Failed to load hydra-synth"); };
-document.head.appendChild(s);
-}
-
-      function initHydra(){
-        if(hydraStarted) return;
-      function initHydra() {
-        if (hydraStarted) return;
-hydraStarted = true;
-
-        try{
-        try {
-const canvas = document.getElementById("hydra-canvas");
-          if(!canvas) return;
-          if (!canvas) return;
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-canvas.style.width = window.innerWidth + "px";
-canvas.style.height = window.innerHeight + "px";
-
-          const hydra = new Hydra({ canvas, detectAudio:false });
-          const hydra = new Hydra({ canvas, detectAudio: false });
-window._hydra = hydra;
-window.speed = 0.18;
-
-const pattern = () =>
-            osc(180,0)
-            osc(180, 0)
-.kaleid(4)
-.rotate(0.18)
-              .scale(1.6,0.32)
-              .scale(1.6, 0.32)
-.scrollX(0.12)
-.scrollY(-0.08)
-              .pixelate(120,35)
-              .modulate(noise(5,0.25),0.18);
-              .pixelate(120, 35)
-              .modulate(noise(5, 0.25), 0.18);
+pattern = () =>
+  osc(180,0)
+    .kaleid(5)
+    .rotate(0.18)
+    .scale(1.45,0.38)
+    .scrollX(0.12)
+    .scrollY(-0.08)
+    .modulate(noise(3,0.25),0.12);
 
 pattern()
-            .scrollX(() => 0.18 + 0.08*Math.sin(time*0.27),0.018)
-            .scrollY(() => -0.08 + 0.06*Math.cos(time*0.19),0.014)
-            .rotate(() => 0.18*Math.sin(time*0.11))
-            .modulateRotate(noise(5,0.2),0.35)
-            .modulateScale(osc(10,0).rotate(1.57).pixelate(12,90),0.45)
-            .mult(pattern().rotate(0.55).scrollX(0.33,-0.02).scrollY(-0.17,0.018).pixelate(80,35))
-            .diff(noise(45,.65).pixelate(90,24).thresh(.7))
-            .modulate(noise(120,.8),.06)
-            .pixelate(240,75)
-            .scrollX(() => 0.18 + 0.08 * Math.sin(time * 0.27), 0.018)
-            .scrollY(() => -0.08 + 0.06 * Math.cos(time * 0.19), 0.014)
-            .rotate(() => 0.18 * Math.sin(time * 0.11))
-            .modulateRotate(noise(5, 0.2), 0.35)
-            .modulateScale(osc(10, 0).rotate(1.57).pixelate(12, 90), 0.45)
-            .mult(pattern().rotate(0.55).scrollX(0.33, -0.02).scrollY(-0.17, 0.018).pixelate(80, 35))
-            .diff(noise(45, .65).pixelate(90, 24).thresh(.7))
-            .modulate(noise(120, .8), .06)
-            .pixelate(240, 75)
-.contrast(2.6)
-.brightness(-0.1)
-.saturate(0)
-@@ -210,40 +224,31 @@
-canvas.style.width = window.innerWidth + "px";
-canvas.style.height = window.innerHeight + "px";
-try {
-              if(window._hydra && typeof window._hydra.setResolution === "function"){
-              if (window._hydra && typeof window._hydra.setResolution === "function") {
-window._hydra.setResolution(canvas.width, canvas.height);
-}
-            } catch(e){}
-            } catch (e) { }
-});
-        } catch(e){
-        } catch (e) {
-console.error(e);
-}
-}
-
-      function boot(){
-      function boot() {
-renderImages();
-        if("requestIdleCallback" in window){
-        if ("requestIdleCallback" in window) {
-requestIdleCallback(() => loadHydra(initHydra), { timeout: 500 });
-} else {
-setTimeout(() => loadHydra(initHydra), 200);
-}
-}
-
-      if(document.readyState === "loading"){
-        window.addEventListener("DOMContentLoaded", boot, { once:true });
-      if (document.readyState === "loading") {
-        window.addEventListener("DOMContentLoaded", boot, { once: true });
-} else {
-boot();
-}
-})();
+  .scrollX(() => 0.18 + 0.04*Math.sin(time*0.27),0.015)
+  .scrollY(() => -0.08 + 0.03*Math.cos(time*0.19),0.011)
+  .rotate(() => 0.12*Math.sin(time*0.11))
+  .modulateRotate(noise(5,0.2),0.25)
+  .modulateScale(noise(2,0.35),0.35)
+  .mult(
+    pattern()
+      .rotate(0.55)
+      .scrollX(0.33,-0.02)
+      .scrollY(-0.17,0.018)
+      .pixelate(140,60)
+  )
+  .diff(
+    noise(40,.55)
+      .pixelate(80,30)
+      .thresh(.72)
+  )
+  .modulate(noise(150,.8),.05)
+  .pixelate(280,90)
+  .contrast(2.3)
+  .brightness(-0.08)
+  .saturate(0)
+  .out();
 </script>
+
 </body>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0; url=images.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>everything is unreal</title>
-  </head>
-  <body>
-    <p>If you are not redirected, <a href="images.html">open the site</a>.</p>
-  </body>
-</html>
 </html>
