@@ -49,52 +49,112 @@ html, body{
   display:block;
 }
 
-/* TABLE AREA */
+/* IMAGE CONTAINER */
 .index_gallery{
-  position:relative;
-  width:800vw;
-  height:800vh;
-  z-index:10;
-
-}
-
-  
-  
-  .gallery{
-  position:relative;
+  position:fixed;
+  inset:0;
   width:100vw;
   height:100vh;
   z-index:10;
-  padding-top:120px;
-  padding-left:180px;
+  overflow:hidden;
 }
 
-/* TABLE */
-table{
-  border-collapse:collapse;
-  background:#000;
-  border:2px inset #888;
-}
-
-td{
-  width:120px;
-  height:90px;
-  border:1px inset #666;
-  text-align:center;
-  vertical-align:middle;
-  background:#000;
-}
-
-.thumb{
-  color:#888;
-  font-size:12px;
-}
-
-img{
-  width:100%;
-  height:100%;
+/* HAPHAZARD IMAGE LAYERS */
+.image-layer{
+  position:absolute;
   object-fit:cover;
-  display:block;
+  will-change:transform, opacity;
+}
+
+.img-1{
+  width:35vw;
+  height:45vh;
+  top:10vh;
+  left:5vw;
+  opacity:0.85;
+  z-index:11;
+  transform:rotate(12deg);
+  animation:drift1 26s ease-in-out infinite;
+}
+
+.img-2{
+  width:40vw;
+  height:50vh;
+  top:25vh;
+  right:8vw;
+  opacity:0.75;
+  z-index:12;
+  transform:rotate(-18deg);
+  animation:drift2 32s ease-in-out infinite;
+}
+
+.img-3{
+  width:30vw;
+  height:40vh;
+  top:50vh;
+  left:25vw;
+  opacity:0.8;
+  z-index:13;
+  transform:rotate(25deg);
+  animation:drift3 22s ease-in-out infinite;
+}
+
+.img-4{
+  width:38vw;
+  height:48vh;
+  bottom:5vh;
+  right:15vw;
+  opacity:0.85;
+  z-index:14;
+  transform:rotate(-8deg);
+  animation:drift4 29s ease-in-out infinite;
+}
+
+.img-5{
+  width:32vw;
+  height:42vh;
+  top:35vh;
+  right:35vw;
+  opacity:0.7;
+  z-index:15;
+  transform:rotate(15deg);
+  animation:drift5 24s ease-in-out infinite;
+}
+
+/* DRIFT / ROTATION ANIMATIONS */
+@keyframes drift1{
+  0%{ transform:translate(0,0) rotate(12deg); opacity:0.85; }
+  25%{ transform:translate(1.5vw,-2vh) rotate(16deg); opacity:0.7; }
+  50%{ transform:translate(-1vw,1.5vh) rotate(9deg); opacity:0.85; }
+  75%{ transform:translate(2vw,1vh) rotate(14deg); opacity:0.65; }
+  100%{ transform:translate(0,0) rotate(12deg); opacity:0.85; }
+}
+
+@keyframes drift2{
+  0%{ transform:translate(0,0) rotate(-18deg); opacity:0.75; }
+  30%{ transform:translate(-2vw,1.5vh) rotate(-22deg); opacity:0.6; }
+  60%{ transform:translate(1.5vw,-1vh) rotate(-14deg); opacity:0.8; }
+  100%{ transform:translate(0,0) rotate(-18deg); opacity:0.75; }
+}
+
+@keyframes drift3{
+  0%{ transform:translate(0,0) rotate(25deg); opacity:0.8; }
+  40%{ transform:translate(1vw,2vh) rotate(20deg); opacity:0.9; }
+  70%{ transform:translate(-1.5vw,-1vh) rotate(29deg); opacity:0.6; }
+  100%{ transform:translate(0,0) rotate(25deg); opacity:0.8; }
+}
+
+@keyframes drift4{
+  0%{ transform:translate(0,0) rotate(-8deg); opacity:0.85; }
+  33%{ transform:translate(-1.5vw,-1.5vh) rotate(-12deg); opacity:0.65; }
+  66%{ transform:translate(2vw,1vh) rotate(-4deg); opacity:0.9; }
+  100%{ transform:translate(0,0) rotate(-8deg); opacity:0.85; }
+}
+
+@keyframes drift5{
+  0%{ transform:translate(0,0) rotate(15deg); opacity:0.7; }
+  50%{ transform:translate(-2vw,1.5vh) rotate(19deg); opacity:0.55; }
+  100%{ transform:translate(0,0) rotate(15deg); opacity:0.7; }
 }
 </style>
 </head>
@@ -112,9 +172,11 @@ img{
 </nav>
 
 <div class="index_gallery">
-
-
-
+  <img src="IMG_4349.jpeg" alt="image 1" class="image-layer img-1">
+  <img src="IMG_4419.jpeg" alt="image 2" class="image-layer img-2">
+  <img src="IMG_4436.jpeg" alt="image 3" class="image-layer img-3">
+  <img src="IMG_4448.jpeg" alt="image 4" class="image-layer img-4">
+  <img src="IMG_4458.jpeg" alt="image 5" class="image-layer img-5">
 </div>
 
 <script src="https://unpkg.com/hydra-synth"></script>
