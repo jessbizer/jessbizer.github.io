@@ -39,6 +39,26 @@ html, body{
   margin-bottom:6px;
 }
 
+.menu a:hover{
+  text-decoration:line-through;
+}
+
+.menu a.glitch-swap span.default-text{
+  display:inline;
+}
+
+.menu a.glitch-swap span.hover-text{
+  display:none;
+}
+
+.menu a.glitch-swap:hover span.default-text{
+  display:none;
+}
+
+.menu a.glitch-swap:hover span.hover-text{
+  display:inline;
+}
+
 /* HYDRA BACKGROUND */
 #hydra-canvas{
   position:fixed;
@@ -94,65 +114,9 @@ img{
 <canvas id="hydra-canvas"></canvas>
 
 <nav class="menu">
-  <a href="index.html">everything is unreal</a><br>
+  <a class="glitch-swap" href="index.html"><span class="default-text">everything is unreal</span><span class="hover-text">it's a glitch</span></a><br>
   <a href="images.html">images</a><br>
   <a href="video.html">video</a><br>
   <a href="audio.html">audio</a><br>
   <a href="text.html">text</a>
 </nav>
-
-<div class="gallery">
-
-<table>
-
-</table>
-
-</div>
-
-<script src="https://unpkg.com/hydra-synth"></script>
-
-<script>
-const hydra = new Hydra({
-  canvas: document.getElementById("hydra-canvas"),
-  detectAudio:false
-});
-
-speed = 0.18;
-
-pattern = () =>
-  osc(180,0)
-    .kaleid(5)
-    .rotate(0.18)
-    .scale(1.45,0.38)
-    .scrollX(0.12)
-    .scrollY(-0.08)
-    .modulate(noise(3,0.25),0.12);
-
-pattern()
-  .scrollX(() => 0.18 + 0.04*Math.sin(time*0.27),0.015)
-  .scrollY(() => -0.08 + 0.03*Math.cos(time*0.19),0.011)
-  .rotate(() => 0.12*Math.sin(time*0.11))
-  .modulateRotate(noise(5,0.2),0.25)
-  .modulateScale(noise(2,0.35),0.35)
-  .mult(
-    pattern()
-      .rotate(0.55)
-      .scrollX(0.33,-0.02)
-      .scrollY(-0.17,0.018)
-      .pixelate(140,60)
-  )
-  .diff(
-    noise(40,.55)
-      .pixelate(80,30)
-      .thresh(.72)
-  )
-  .modulate(noise(150,.8),.05)
-  .pixelate(280,90)
-  .contrast(2.3)
-  .brightness(-0.08)
-  .saturate(0)
-  .out();
-</script>
-
-</body>
-</html>
