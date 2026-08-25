@@ -69,42 +69,45 @@ html, body{
   display:block;
 }
 
-/* TABLE AREA */
+/* GALLERY */
 .gallery{
   position:relative;
+  z-index:10;
   width:100vw;
   height:100vh;
-  z-index:10;
-  padding-top:120px;
-  padding-left:180px;
+  padding:120px 0 0 180px;
 }
 
-/* TABLE */
-table{
-  border-collapse:collapse;
-  background:#000;
-  border:2px inset #888;
-}
-
-td{
-  width:120px;
-  height:90px;
-  border:1px inset #666;
-  text-align:center;
-  vertical-align:middle;
-  background:#000;
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
+  gap:8px;
+  max-width:calc(100vw - 220px);
 }
 
 .thumb{
-  color:#888;
-  font-size:12px;
+  width:140px;
+  height:140px;
+  border:1px inset #666;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
 
-img{
+.thumb img{
   width:100%;
   height:100%;
   object-fit:cover;
   display:block;
+}
+
+.thumb span{
+  color:#888;
+  font-size:12px;
+  padding:8px;
+  text-align:center;
 }
 </style>
 </head>
@@ -120,6 +123,10 @@ img{
   <a href="audio.html">audio</a><br>
   <a href="text.html">text</a>
 </nav>
+
+<main class="gallery">
+  <div class="gallery-grid" id="gallery-grid"></div>
+</main>
 
 <script src="https://unpkg.com/hydra-synth"></script>
 <script>
@@ -179,6 +186,19 @@ function runVariation2() {
 
   render(o0);
 }
+
+/* ---------- Images from main branch ---------- */
+const imageFiles = [
+  "images/image1.jpg",
+  "images/image2.jpg",
+  "images/image3.jpg",
+  "images/image4.jpg"
+];
+
+const galleryGrid = document.getElementById("gallery-grid");
+galleryGrid.innerHTML = imageFiles.map(src => `
+  <div class="thumb"><img src="${src}" alt="image"></div>
+`).join("");
 
 /* ---------- Variation switching ---------- */
 const variations = [runVariation1, runVariation2];
