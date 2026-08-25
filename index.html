@@ -38,6 +38,25 @@ html, body{
   padding:0 5px;
   margin-bottom:6px;
 }
+.menu a:hover{
+  text-decoration:line-through;
+}
+
+.menu a.glitch-swap span.default-text{
+  display:inline;
+}
+
+.menu a.glitch-swap span.hover-text{
+  display:none;
+}
+
+.menu a.glitch-swap:hover span.default-text{
+  display:none;
+}
+
+.menu a.glitch-swap:hover span.hover-text{
+  display:inline;
+}
 
 /* HYDRA BACKGROUND */
 #hydra-canvas{
