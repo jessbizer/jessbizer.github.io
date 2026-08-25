@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>everything is unreal // images</title>
+<title>everything is unreal // video</title>
 
 <style>
 *{
@@ -120,3 +120,93 @@ img{
   <a href="audio.html">audio</a><br>
   <a href="text.html">text</a>
 </nav>
+
+<script src="https://unpkg.com/hydra-synth"></script>
+<script>
+const hydra = new Hydra({
+  canvas: document.getElementById("hydra-canvas"),
+  detectAudio:false
+});
+
+/* ---------- Variation 1 (existing) ---------- */
+function runVariation1() {
+  src(o0)
+    .saturate(0)
+    .scale(0.995)
+    .modulate(noise(2, 0.1).brightness(-0.5), 0.003)
+    .layer(
+      src(o1).mask(src(o1).luma(0.6, 0.1))
+    )
+    .out(o0);
+
+  noise(3, 0.4)
+    .contrast(2)
+    .scrollX(0.1, 0.05)
+    .color(-1, 1, 2)
+    .brightness(-0.2)
+    .mult(osc(10, 0.3).thresh(0.5))
+    .layer(
+      gradient(0.5)
+        .hue(time * 0.1)
+        .saturate(2)
+        .mult(noise(5, 0.8).thresh(0.7))
+    )
+    .out(o1);
+
+  render(o0);
+}
+
+/* ---------- Variation 2 (fixed - no audio dependency) ---------- */
+function runVariation2() {
+  osc(18, 0.1, 0)
+    .color(1, 1, 1)
+    .mult(osc(10, 0.01, 0))
+    .repeat(2, 20)
+    .rotate(0.9)
+    .modulate(o1)
+    .scale(5, () => (Math.sin(time * 0.5) * 0.9 + 2))
+    .diff(o1)
+    .saturate(0)
+    .out(o0);
+
+  osc(20, 0.2, 0)
+    .color(1, 1, 1)
+    .mult(osc(10))
+    .modulateRotate(o0, 1)
+    .rotate(0.2)
+    .saturate(0)
+    .out(o1);
+
+  render(o0);
+}
+
+/* ---------- Variation switching ---------- */
+const variations = [runVariation1, runVariation2];
+let currentVariation = Math.floor(Math.random() * variations.length);
+
+function runCurrentVariation() {
+  variations[currentVariation]();
+}
+
+function switchVariation() {
+  let next = currentVariation;
+  if (variations.length > 1) {
+    while (next === currentVariation) {
+      next = Math.floor(Math.random() * variations.length);
+    }
+  }
+  currentVariation = next;
+}
+
+/* continuous animation loop */
+function animate() {
+  runCurrentVariation();
+  requestAnimationFrame(animate);
+}
+
+animate();
+document.addEventListener("click", switchVariation);
+</script>
+
+</body>
+</html>
