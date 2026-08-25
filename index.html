@@ -162,40 +162,90 @@ table img{
 </div>
 
 <script src="https://unpkg.com/hydra-synth"></script>
+<script src="https://unpkg.com/hydra-synth"></script>
 <script>
 const hydra = new Hydra({
   canvas: document.getElementById("hydra-canvas"),
   detectAudio:false
 });
 
-// o0: The desaturated feedback loop that catches color flashes
-src(o0)
-  .saturate(0) // Forces the feedback trail into black and white
-  .scale(0.995) 
-  .modulate(noise(2, 0.1).brightness(-0.5), 0.003) // Subtle edge warping
-  .layer(
-    src(o1)
-      .mask(src(o1).luma(0.6, 0.1)) // Only layers the brightest parts of o1
-  )
-  .out(o0)
+/* ---------- Variation 1 (existing) ---------- */
+function runVariation1() {
+  src(o0)
+    .saturate(0)
+    .scale(0.995)
+    .modulate(noise(2, 0.1).brightness(-0.5), 0.003)
+    .layer(
+      src(o1).mask(src(o1).luma(0.6, 0.1))
+    )
+    .out(o0);
 
-// o1: The generator creating high-contrast B&W structures and sudden color flashes
-noise(3, 0.4)
-  .contrast(2)
-  .scrollX(0.1, 0.05)
-  .color(-1, 1, 2) // Inverts and shifts channels to create intense, volatile colors
-  .brightness(-0.2)
-  .mult(osc(10, 0.3).thresh(0.5)) // Chops the colors into fast-blinking strobes
-  .layer(
-    gradient(0.5)
-      .hue(time * 0.1)
-      .saturate(2)
-      .mult(noise(5, 0.8).thresh(0.7)) // Random bursts of saturated color
-  )
-  .out(o1)
+  noise(3, 0.4)
+    .contrast(2)
+    .scrollX(0.1, 0.05)
+    .color(-1, 1, 2)
+    .brightness(-0.2)
+    .mult(osc(10, 0.3).thresh(0.5))
+    .layer(
+      gradient(0.5)
+        .hue(time * 0.1)
+        .saturate(2)
+        .mult(noise(5, 0.8).thresh(0.7))
+    )
+    .out(o1);
 
-render(o0)
+  render(o0);
+}
 
+/* ---------- Variation 2 (your new patch) ---------- */
+function runVariation2() {
+  osc(18, 0.1, 0)
+    .color(1, 1, 1)
+    .mult(osc(10, 0.01, 0))
+    .repeat(2, 20)
+    .rotate(0.9)
+    .modulate(o1)
+    .scale(5, () => (a.fft[0] * 0.9 + 2))
+    .diff(o1)
+    .saturate(0)
+    .out(o0);
+
+  osc(20, 0.2, 0)
+    .color(1, 1, 1)
+    .mult(osc(10))
+    .modulateRotate(o0, 1)
+    .rotate(0.2)
+    .saturate(0)
+    .out(o1);
+
+  render(o0);
+}
+
+/* ---------- Variation switching ---------- */
+const variations = [runVariation1, runVariation2];
+let currentVariation = Math.floor(Math.random() * variations.length); // random on each visit
+
+function runCurrentVariation() {
+  variations[currentVariation]();
+}
+
+function switchVariation() {
+  // pick a different variation when possible
+  let next = currentVariation;
+  if (variations.length > 1) {
+    while (next === currentVariation) {
+      next = Math.floor(Math.random() * variations.length);
+    }
+  }
+  currentVariation = next;
+  runCurrentVariation();
+}
+
+// initial random variation
+runCurrentVariation();
+
+// click anywhere to switch background variation
+document.addEventListener("click", switchVariation);
 </script>
 
 </body>
