@@ -114,7 +114,7 @@ html, body{
 .img-3 { margin-left: -40px; margin-top:  90px; transform:translate(-50%,-50%) rotate(0deg); }
 .img-4 { margin-left: 150px; margin-top: 110px; transform:translate(-50%,-50%) rotate(0deg); }
 .img-5 { margin-left:-140px; margin-top:  40px; transform:translate(-50%,-50%) rotate(0deg); }
-  .img-6 { margin-left:-80px; margin-top:  50px; transform:translate(-50%,-50%) rotate(0deg); }
+.img-6 { margin-left:-80px; margin-top:  50px; transform:translate(-50%,-50%) rotate(0deg); }
 
 /* TABLE */
 table{
@@ -157,3 +157,32 @@ table img{
   <a href="audio.html">audio</a><br>
   <a href="text.html">text</a>
 </nav>
+
+<section class="index_gallery">
+  <div class="gallery">
+    <div class="image-stack">
+      <img class="img-1" src="images/1.jpg" alt="image 1">
+      <img class="img-2" src="images/2.jpg" alt="image 2">
+      <img class="img-3" src="images/3.jpg" alt="image 3">
+      <img class="img-4" src="images/4.jpg" alt="image 4">
+      <img class="img-5" src="images/5.jpg" alt="image 5">
+      <img class="img-6" src="images/6.jpg" alt="image 6">
+    </div>
+  </div>
+</section>
+
+<script src="https://unpkg.com/hydra-synth"></script>
+<script>
+const hydra = new Hydra({
+  canvas: document.getElementById('hydra-canvas'),
+  detectAudio: false
+})
+
+osc(10, 0.05, 1.2)
+  .color(0.05, 0.05, 0.05)
+  .modulate(noise(3, 0.1), 0.1)
+  .out()
+</script>
+
+</body>
+</html>
