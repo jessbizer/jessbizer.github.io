@@ -29,13 +29,26 @@ html, body{
   background:black;
   padding:0 5px;
   margin-bottom:6px;
+  position:relative;
 }
 
 .menu a:hover{
   text-decoration:line-through;
 }
 
-/* HYDRA BACKGROUND */
+/* Special hover text swap for "everything is unreal" */
+.menu a.glitch-swap span.default-text{
+  display:inline;
+}
+.menu a.glitch-swap span.hover-text{
+  display:none;
+}
+.menu a.glitch-swap:hover span.default-text{
+  display:none;
+}
+.menu a.glitch-swap:hover span.hover-text{
+  display:inline;
+}/* HYDRA BACKGROUND */
 
 #hydra-canvas{
   position:fixed;
