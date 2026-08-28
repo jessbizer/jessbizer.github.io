@@ -187,17 +187,50 @@ function runVariation2() {
   render(o0);
 }
 
-/* ---------- Images from main branch ---------- */
+/* ---------- Images from the site root ---------- */
 const imageFiles = [
-  "images/image1.jpg",
-  "images/image2.jpg",
-  "images/image3.jpg",
-  "images/image4.jpg"
+  "IMG_3878.jpeg",
+  "IMG_3945.jpeg",
+  "IMG_3959.jpeg",
+  "IMG_3964.jpeg",
+  "IMG_4343.jpeg",
+  "IMG_4349.jpeg",
+  "IMG_4419.jpeg",
+  "IMG_4436.jpeg",
+  "IMG_4448.jpeg",
+  "IMG_4458.jpeg",
+  "IMG_4490.jpeg",
+  "IMG_4526.jpeg",
+  "IMG_4537.jpeg",
+  "IMG_4547.jpeg",
+  "IMG_4745.jpeg",
+  "IMG_4749.jpeg",
+  "IMG_4753.jpeg",
+  "IMG_4764.jpeg",
+  "IMG_4769.jpeg",
+  "IMG_5431.jpeg",
+  "IMG_5539.jpeg",
+  "IMG_5625.jpeg",
+  "IMG_5669.jpeg",
+  "IMG_5688.jpeg",
+  "IMG_5811.jpeg",
+  "IMG_5815.jpeg",
+  "IMG_8141.jpeg",
+  "glitch-performance.png",
+  "glitch_figgy_crowpose.jpg",
+  "glitch_site (1).jpg",
+  "glitch_site (2).jpg",
+  "glitch_site (3).jpg",
+  "glitch_site (5).jpg",
+  "glitch_site (6).jpg",
+  "glitch_site (7).jpg",
+  "glitch_site (8).jpg",
+  "glitch_site (9).jpg"
 ];
 
 const galleryGrid = document.getElementById("gallery-grid");
-galleryGrid.innerHTML = imageFiles.map(src => `
-  <div class="thumb"><img src="${src}" alt="image"></div>
+galleryGrid.innerHTML = imageFiles.map((src, index) => `
+  <div class="thumb"><img src="${src}" alt="Gallery image ${index + 1}" loading="lazy"></div>
 `).join("");
 
 /* ---------- Variation switching ---------- */
