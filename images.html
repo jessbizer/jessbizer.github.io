@@ -64,7 +64,13 @@ html, body{
 }
 
 /* GALLERY */
-
+.gallery{
+  position:relative;
+  z-index:10;
+  width:100vw;
+  min-height:100vh;   /* changed from height */
+  padding:120px 0 40px 180px; /* add bottom padding so last row isn't clipped */
+}
 
 .gallery-grid{
   display:grid;
