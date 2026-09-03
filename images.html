@@ -12,16 +12,22 @@
   box-sizing:border-box;
 }
 
-
-
-/* MENU */
 html, body{
   width:100%;
-  min-height:100%;
+  height:100%;
   background:#000;
-  overflow-x:hidden;
-  overflow-y:auto;
+  overflow:hidden;
   font-family:"Courier New", monospace;
+}
+
+/* MENU */
+.menu{
+  position:fixed;
+  top:25px;
+  left:25px;
+  z-index:50;
+  font-size:16px;
+  line-height:1.8;
 }
 
 .menu a{
@@ -68,15 +74,14 @@ html, body{
   position:relative;
   z-index:10;
   width:100vw;
-  min-height:100vh;   /* changed from height */
-  padding:120px 0 40px 180px; /* add bottom padding so last row isn't clipped */
+  height:100vh;
+  padding:120px 0 0 180px;
 }
 
 .gallery-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
   gap:8px;
-}
   max-width:calc(100vw - 220px);
 }
 
@@ -184,6 +189,7 @@ function runVariation2() {
 
 /* ---------- Images from main branch ---------- */
 const imageFiles = [
+const imageFiles = [
   "IMG_3878.jpeg",
   "IMG_3945.jpeg",
   "IMG_3959.jpeg",
@@ -221,6 +227,7 @@ const imageFiles = [
   "glitch_site (7).jpg",
   "glitch_site (8).jpg",
   "glitch_site (9).jpg"
+];
 ];
 
 const galleryGrid = document.getElementById("gallery-grid");
